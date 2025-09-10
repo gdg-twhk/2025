@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "preview": "http-server ./out",
+    "deploy": "pnpm run build && firebase deploy --only hosting"
   },
   "dependencies": {
     "next": "15.5.0",
