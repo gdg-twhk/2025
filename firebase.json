@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "site": "devfest-taipei-2025",
+    "public": "out",
+    "ignore": [
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
