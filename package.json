@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "prepare": "husky",
     "preview": "http-server ./out",
-    "deploy": "pnpm run build && firebase deploy --only hosting"
+    "deploy": "pnpm run build && firebase deploy --only hosting",
+    "deploy:preview": "pnpm run build && firebase hosting:channel:deploy $npm_package_name-v$npm_package_version --expires 7d"
   },
   "dependencies": {
     "next": "15.5.0",
