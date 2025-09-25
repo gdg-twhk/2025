@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "devfest-taipei-2025",
+    "site": "devfest-taipei-2025-bbf01",
     "public": "out",
     "ignore": [
       "**/.*",
