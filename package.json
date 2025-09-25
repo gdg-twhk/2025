@@ -17,16 +17,19 @@
   "dependencies": {
     "next": "15.5.0",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "swr": "^2.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
+    "@iconify/react": "^6.0.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "clsx": "^2.1.1",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
     "eslint-plugin-prettier": "^5.5.4",
