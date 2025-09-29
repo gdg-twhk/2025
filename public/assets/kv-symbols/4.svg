@@ -1,0 +1,8 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336 208" width="336" height="208">
+	<style>
+		.s0 { fill: #f9ab00;stroke: #1e1e1e;stroke-linejoin: round;stroke-width: 5 } 
+	</style>
+	<g id="MISCELLANEOUS">
+		<path id="-e-" class="s0" d="m330.21 96.71l-93.14-93.08c-1.47-1.47-3.86-1.47-5.33 0l-37.36 37.37c-1.47 1.47-1.47 3.85 0 5.32l26.89 26.89h-218.27v60.37h218.29l-27.4 27.4c-1.47 1.47-1.47 3.85 0 5.32l39.14 37.36c1.47 1.48 3.86 1.48 5.33 0l91.83-93.59q0.7-0.7 1.22-1.5c2.42-3.66 2.02-8.63-1.2-11.86z"/>
+	</g>
+</svg>

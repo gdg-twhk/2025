@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 186 174" width="186" height="174">
+	<style>
+		.s0 { fill: #57caff;stroke: #1e1e1e;stroke-linejoin: round;stroke-width: 5 } 
+	</style>
+	<g id="MISCELLANEOUS">
+		<g id="-e-">
+			<path id="&lt;Path&gt;" class="s0" d="m7.06 2.75h171.82c2.21 0 4 1.89 4 4.21v59.08c0 2.33-1.79 4.21-4 4.21h-171.82c-2.21 0-4-1.88-4-4.21v-59.08c0-2.32 1.79-4.21 4-4.21z"/>
+			<path id="&lt;Path&gt;" class="s0" d="m7.06 104h171.82c2.21 0 4 1.89 4 4.21v59.08c0 2.33-1.79 4.21-4 4.21h-171.82c-2.21 0-4-1.88-4-4.21v-59.08c0-2.32 1.79-4.21 4-4.21z"/>
+		</g>
+	</g>
+</svg>
