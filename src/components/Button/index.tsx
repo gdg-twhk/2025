@@ -10,15 +10,7 @@ interface ButtonProps {
   onClick?: () => void
 }
 
-export function Button({
-  text,
-  className,
-  color = 'black',
-  shape = 'rect',
-  shineAnimation = false,
-  href,
-  onClick,
-}: ButtonProps) {
+export function Button({ text, className, color = 'black', shape = 'rect', shineAnimation = false, href, onClick }: ButtonProps) {
   return (
     <button
       className={clsx(
