@@ -19,7 +19,7 @@ export function Menu() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [isPageTop0, setIsPageTop0] = useState(true)
-  const [isPageTop100, setIsPageTop100] = useState(true)
+  const [isPageTop300, setIsPageTop300] = useState(true)
 
   function toggleMenu() {
     setIsOpen(!isOpen)
@@ -28,7 +28,7 @@ export function Menu() {
   useEffect(() => {
     const updatePageTop = () => {
       setIsPageTop0(window.scrollY < 5)
-      setIsPageTop100(window.scrollY < 180)
+      setIsPageTop300(window.scrollY < 300)
     }
     updatePageTop()
     window.addEventListener('scroll', updatePageTop)
@@ -40,9 +40,9 @@ export function Menu() {
       {/* Desktop Menu */}
       <nav
         className={clsx(
-          'relative hidden h-[60px] w-full items-center justify-center gap-5 bg-white pt-2 pb-3 lg:flex',
+          'relative hidden h-[60px] w-full items-center justify-center gap-5 border-b border-gray-200 bg-white pt-2 pb-3 lg:flex',
           pathname === '/' && !isPageTop0 && 'transition-colors duration-300',
-          pathname === '/' && isPageTop100 && '!bg-transparent'
+          pathname === '/' && isPageTop300 && 'border-none !bg-transparent'
         )}
       >
         {navItems.map((item) => (
@@ -60,7 +60,7 @@ export function Menu() {
           className={clsx(
             'absolute top-2 right-4',
             pathname === '/' && !isPageTop0 && 'transition-opacity duration-300',
-            pathname === '/' && isPageTop100 && 'pointer-events-none opacity-0'
+            pathname === '/' && isPageTop300 && 'pointer-events-none opacity-0'
           )}
         >
           <Button text="立刻報名" href={BEVY_RSVP_URL} shape="pill" color="blue" />

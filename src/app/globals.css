@@ -145,6 +145,16 @@
   img {
     @apply drag-none;
   }
+
+  @keyframes button-shine {
+    0%,
+    80% {
+      transform: skew(-12deg) translateX(-100%);
+    }
+    100% {
+      transform: skew(-12deg) translateX(100%);
+    }
+  }
 }
 
 @utility drag-none {
