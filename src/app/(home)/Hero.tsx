@@ -110,10 +110,17 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full overflow-x-clip">
-      <GridPattern width={40} height={40} className="[mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:hidden" />
-      <GridPattern width={55} height={55} className="hidden [mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:block" />
+      <GridPattern
+        width={40}
+        height={40}
+        className="[mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:hidden"
+      />
+      <GridPattern
+        width={55}
+        height={55}
+        className="hidden [mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:block"
+      />
 
-      {/* 散落的符號元素 */}
       {symbols.map((symbol, index) => (
         <img
           key={index}
@@ -128,14 +135,10 @@ export function Hero() {
         />
       ))}
 
-      {/* 主要內容 */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-12">
         <img className="mb-10 min-w-1/3" src="/assets/key-visual.png" alt="logo" width={400} />
-
-        <Button className="" text="立刻報名" href={BEVY_RSVP_URL} shineAnimation />
+        <Button text="立刻報名" href={BEVY_RSVP_URL} shineAnimation />
       </div>
-
-      {/* <PhotoMarque /> */}
     </section>
   )
 }

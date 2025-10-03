@@ -1,9 +1,10 @@
 import clsx from 'clsx'
+import { BrandColor } from '@/lib/types'
 
 interface ButtonProps {
   text: string
   shape?: 'rect' | 'pill'
-  color?: 'black' | 'blue' | 'green' | 'yellow' | 'red'
+  color?: 'black' | BrandColor
   href?: string
   shineAnimation?: boolean
   className?: string
