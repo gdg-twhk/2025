@@ -28,7 +28,7 @@ export function Menu() {
   useEffect(() => {
     const updatePageTop = () => {
       setIsPageTop0(window.scrollY < 5)
-      setIsPageTop100(window.scrollY < 100)
+      setIsPageTop100(window.scrollY < 180)
     }
     updatePageTop()
     window.addEventListener('scroll', updatePageTop)
