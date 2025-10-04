@@ -21,7 +21,7 @@ export function Button({
   return (
     <button
       className={clsx(
-        'shadow-core-black border-core-black group relative inline-flex h-10 items-center justify-center overflow-hidden border-[3px] px-6 font-medium shadow-[0px_3px_0px] transition-all duration-200 active:translate-y-[3px] active:shadow-none',
+        'shadow-core-black border-core-black group relative inline-flex h-10 items-center justify-center overflow-hidden border-[3px] px-6 font-medium whitespace-nowrap shadow-[0px_3px_0px] transition-all duration-200 active:translate-y-[3px] active:shadow-none',
         {
           'rounded-md': shape === 'rect',
           'rounded-full': shape === 'pill',

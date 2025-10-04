@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import { SectionTitle } from '@/components/SectionTitle'
 import { Marquee } from '@/components/ui/marquee'
 import { Hero } from './Hero'
+import { Button } from '@/components/Button'
 
 // TODO: 這邊再挑一些照片
 const marqueePhotosSrc = [
@@ -33,7 +35,7 @@ export default function Home() {
           />
         ))}
       </Marquee>
-      <Marquee reverse className="[--duration:24s]">
+      <Marquee className="mb-16 [--duration:24s]" reverse>
         {marqueeSecondRow.map((src, index) => (
           <img
             key={index}
@@ -46,9 +48,50 @@ export default function Home() {
         ))}
       </Marquee>
 
-      <div className="content-container">
-        <section className="mb-20">
-          <SectionTitle color="green">合作夥伴</SectionTitle>
+      <div className="content-container space-y-24 pb-20">
+        <section>
+          活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹 lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </section>
+
+        <section>
+          <SectionTitle id="speakers" color="yellow">
+            議程講者
+          </SectionTitle>
+          <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+            {/* TODO: 加入正式資料 */}
+            {Array(12)
+              .fill(0)
+              .map((_, index) => (
+                <li
+                  key={index}
+                  className="group relative aspect-square w-full cursor-pointer overflow-clip rounded-xl border border-gray-300 bg-gray-50 transition-transform duration-300 hover:scale-105"
+                >
+                  <img className="size-full" src="https://i.pravatar.cc/300" />
+                  <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-black/50 to-transparent" />
+                  <p className="absolute bottom-7 left-3 text-lg font-medium text-white">{'講者姓名'}</p>
+                  <p className="absolute bottom-2 left-3 text-sm text-gray-200">{'職稱/公司'}</p>
+                </li>
+              ))}
+          </ul>
+
+          <div className="mt-8 flex justify-center gap-4 sm:gap-6">
+            <Link href="/speakers">
+              <Button text="查看所有講者" shape="pill" color="green" />
+            </Link>
+            <Link href="/sessions">
+              <Button text="查看所有議程" shape="pill" color="red" />
+            </Link>
+          </div>
+        </section>
+
+        <section>
+          <SectionTitle id="sponsors" color="green">
+            合作夥伴
+          </SectionTitle>
 
           <div className="flex w-full flex-col flex-wrap items-center justify-center gap-5 sm:flex-row md:gap-8">
             <img
@@ -59,8 +102,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mb-20">
-          <SectionTitle color="blue">社群夥伴</SectionTitle>
+        <section>
+          <SectionTitle id="social-partners" color="blue">
+            社群夥伴
+          </SectionTitle>
         </section>
       </div>
     </main>
