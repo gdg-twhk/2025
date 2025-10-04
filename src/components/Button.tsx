@@ -5,13 +5,19 @@ interface ButtonProps {
   text: string
   shape?: 'rect' | 'pill'
   color?: 'black' | BrandColor
-  href?: string
   shineAnimation?: boolean
   className?: string
   onClick?: () => void
 }
 
-export function Button({ text, className, color = 'black', shape = 'rect', shineAnimation = false, href, onClick }: ButtonProps) {
+export function Button({
+  text,
+  className,
+  color = 'black',
+  shape = 'rect',
+  shineAnimation = false,
+  onClick,
+}: ButtonProps) {
   return (
     <button
       className={clsx(
@@ -29,13 +35,7 @@ export function Button({ text, className, color = 'black', shape = 'rect', shine
       )}
       onClick={onClick}
     >
-      {href ? (
-        <a href={href} target="_blank">
-          {text}
-        </a>
-      ) : (
-        <span>{text}</span>
-      )}
+      {text}
 
       {shineAnimation && (
         <div className="absolute inset-0 flex h-full w-full animate-[button-shine_5s_infinite] justify-center">

@@ -63,7 +63,7 @@ export function Menu() {
             pathname === '/' && isPageTop300 && 'pointer-events-none opacity-0'
           )}
         >
-          <Button text="立刻報名" href={BEVY_RSVP_URL} shape="pill" color="blue" />
+          <Button text="立刻報名" shape="pill" color="blue" onClick={() => window.open(BEVY_RSVP_URL, '_blank')} />
         </div>
       </nav>
 
@@ -74,7 +74,13 @@ export function Menu() {
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         )}
       >
-        <Button className="h-11 text-xl" text="立刻報名" href={BEVY_RSVP_URL} shape="pill" color="blue" />
+        <Button
+          className="h-11 text-xl"
+          text="立刻報名"
+          shape="pill"
+          color="blue"
+          onClick={() => window.open(BEVY_RSVP_URL, '_blank')}
+        />
 
         {navItems.map((item) => (
           <Link className="text-xl" key={item.name} href={item.href} onClick={toggleMenu}>

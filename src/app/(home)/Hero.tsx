@@ -148,7 +148,7 @@ export function Hero() {
             11月30日 8:30~18:00
           </span>
         </p>
-        <Button text="立刻報名" href={BEVY_RSVP_URL} shineAnimation />
+        <Button text="立刻報名" shineAnimation onClick={() => window.open(BEVY_RSVP_URL, '_blank')} />
       </div>
     </section>
   )
