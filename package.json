@@ -15,6 +15,7 @@
     "deploy:preview": "pnpm run build && firebase hosting:channel:deploy $npm_package_name-v$npm_package_version --expires 7d"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
     "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.544.0",
     "motion": "^12.23.22",

@@ -3,6 +3,8 @@ import { SectionTitle } from '@/components/SectionTitle'
 import { Marquee } from '@/components/ui/marquee'
 import { Hero } from './Hero'
 import { Button } from '@/components/Button'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
+import { SpeakerDialogContent } from '@/components/SpeakerDialogContent'
 
 // TODO: 這邊再挑一些照片
 const marqueePhotosSrc = [
@@ -66,15 +68,20 @@ export default function Home() {
             {Array(12)
               .fill(0)
               .map((_, index) => (
-                <li
-                  key={index}
-                  className="group relative aspect-square w-full cursor-pointer overflow-clip rounded-xl border border-gray-300 bg-gray-50 transition-transform duration-300 hover:scale-105"
-                >
-                  <img className="size-full" src="https://i.pravatar.cc/300" />
-                  <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-black/50 to-transparent" />
-                  <p className="absolute bottom-7 left-3 text-lg font-medium text-white">{'講者姓名'}</p>
-                  <p className="absolute bottom-2 left-3 text-sm text-gray-200">{'職稱/公司'}</p>
-                </li>
+                <Dialog key={index}>
+                  <DialogTrigger>
+                    <div
+                      key={index}
+                      className="relative aspect-square w-full cursor-pointer overflow-clip rounded-xl border border-gray-300 bg-gray-50 transition-transform duration-300 hover:scale-105"
+                    >
+                      <img className="size-full" src="https://i.pravatar.cc/300" />
+                      <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-black/50 to-transparent" />
+                      <p className="absolute bottom-7 left-3 text-lg font-medium text-white">{'講者姓名'}</p>
+                      <p className="absolute bottom-2 left-3 text-sm text-gray-200">{'職稱/公司'}</p>
+                    </div>
+                  </DialogTrigger>
+                  <SpeakerDialogContent name={index} />
+                </Dialog>
               ))}
           </ul>
 
