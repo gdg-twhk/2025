@@ -9,7 +9,7 @@ import { Button } from '@/components/Button'
 
 const navItems = [
   { name: '首頁', href: '/' },
-  { name: '參與資訊', href: '/how-to' },
+  { name: '參與資訊', href: '/info' },
   { name: '議程表', href: '/sessions' },
   { name: '講者列表', href: '/speakers' },
   { name: '籌備團隊', href: '/team' },
@@ -40,7 +40,7 @@ export function Menu() {
       {/* Desktop Menu */}
       <nav
         className={clsx(
-          'relative hidden h-[60px] w-full items-center justify-center gap-5 border-b border-gray-200 bg-white pt-2 pb-3 lg:flex',
+          'h-menu-height relative hidden w-full items-center justify-center gap-5 border-b border-gray-200 bg-white pt-2 pb-3 lg:flex',
           pathname === '/' && !isPageTop0 && 'transition-colors duration-300',
           pathname === '/' && isPageTop300 && 'border-none !bg-transparent'
         )}
@@ -82,10 +82,16 @@ export function Menu() {
           </Link>
         ))}
 
-        <div className="mt-6 flex gap-4">
+        <div className="mt-6 flex items-center gap-4">
           {socialLinks.map((link) => (
             <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer">
-              <Icon icon={link.icon} className="size-7" />
+              <Icon
+                icon={link.icon}
+                style={{
+                  width: `${link.size}px`,
+                  height: `${link.size}px`,
+                }}
+              />
             </a>
           ))}
         </div>

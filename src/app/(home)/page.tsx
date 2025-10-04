@@ -6,36 +6,23 @@ export default function Home() {
     <main>
       <Hero />
 
-      <section>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-        <p>其他內容</p>
-      </section>
+      <div className="content-container">
+        <section className="mb-10 md:mb-20">
+          <SectionTitle color="green">合作夥伴</SectionTitle>
 
-      <section>
-        <SectionTitle color="green">合作夥伴</SectionTitle>
-      </section>
+          <div className="flex w-full flex-col flex-wrap items-center justify-center gap-5 sm:flex-row md:gap-8">
+            <img
+              className="w-full max-w-72"
+              src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png"
+              alt="JetBrains logo"
+            ></img>
+          </div>
+        </section>
 
-      <section>
-        <SectionTitle color="blue">社群夥伴</SectionTitle>
-      </section>
+        <section className="mb-10 md:mb-20">
+          <SectionTitle color="blue">社群夥伴</SectionTitle>
+        </section>
+      </div>
     </main>
   )
 }

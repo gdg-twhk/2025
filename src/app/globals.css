@@ -21,6 +21,7 @@
   --color-pastel-green: #ccf6c5;
   --color-pastel-yellow: #ffe7a5;
   --color-pastel-red: #f8d8d8;
+  --spacing-menu-height: 60px;
 
   /* shadcn 變數 */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -154,6 +155,12 @@
     100% {
       transform: skew(-12deg) translateX(100%);
     }
+  }
+}
+
+@layer components {
+  .content-container {
+    @apply mx-auto max-w-7xl px-5;
   }
 }
 

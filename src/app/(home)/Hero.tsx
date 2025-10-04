@@ -4,6 +4,7 @@ import { clsx } from 'clsx'
 import { Button } from '@/components/Button'
 import { GridPattern } from '@/components/ui/grid-pattern'
 import { BEVY_RSVP_URL } from '@/lib/contants'
+import { Icon } from '@iconify/react'
 
 interface Symbol {
   src: string
@@ -136,7 +137,17 @@ export function Hero() {
       ))}
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-12">
-        <img className="mb-10 min-w-1/3" src="/assets/key-visual.png" alt="logo" width={400} />
+        <img className="mb-10 min-w-1/3" src="/assets/key-visual.png" alt="logo" width={400} height={115} />
+        <p className="mb-5 flex flex-col items-center gap-2 lg:flex-row">
+          <span className="text-xl font-semibold">
+            <Icon className="text-core-blue mb-[3px] inline size-6" icon="mdi:map-marker" />
+            台灣大學 博雅教學館
+          </span>
+          <span className="text-xl font-semibold">
+            <Icon className="text-core-red mr-0.5 mb-0.5 inline size-6" icon="mdi:calendar-check" />
+            11月30日 8:30~18:00
+          </span>
+        </p>
         <Button text="立刻報名" href={BEVY_RSVP_URL} shineAnimation />
       </div>
     </section>
