@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import { socialLinks } from '@/lib/contants'
+import { socialLinks } from '@/lib/constants'
 
 export function Footer() {
   return (

@@ -74,7 +74,7 @@ export default function Home() {
                       key={index}
                       className="relative aspect-square w-full cursor-pointer overflow-clip rounded-xl border border-gray-300 bg-gray-50 transition-transform duration-300 hover:scale-105"
                     >
-                      <img className="size-full" src="https://i.pravatar.cc/300" />
+                      <img className="size-full" src="https://i.pravatar.cc/300" loading="lazy" />
                       <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-black/50 to-transparent" />
                       <p className="absolute bottom-7 left-3 text-lg font-medium text-white">{'講者姓名'}</p>
                       <p className="absolute bottom-2 left-3 text-sm text-gray-200">{'職稱/公司'}</p>
@@ -105,6 +105,7 @@ export default function Home() {
               className="w-full max-w-72"
               src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png"
               alt="JetBrains logo"
+              loading="lazy"
             ></img>
           </div>
         </section>

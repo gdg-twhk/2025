@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { clsx } from 'clsx'
 import { Button } from '@/components/Button'
 import { GridPattern } from '@/components/ui/grid-pattern'
-import { BEVY_RSVP_URL } from '@/lib/contants'
+import { BEVY_RSVP_URL } from '@/lib/constants'
 import { Icon } from '@iconify/react'
 
 interface Symbol {
@@ -137,7 +137,15 @@ export function Hero() {
       ))}
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-12">
-        <img className="mb-10 min-w-1/3" src="/assets/key-visual.png" alt="logo" width={400} height={115} />
+        <img
+          className="mb-10 min-w-1/3"
+          src="/assets/key-visual.png"
+          alt="logo"
+          width={400}
+          height={115}
+          fetchPriority="high"
+          loading="eager"
+        />
         <p className="mb-5 flex flex-col items-center gap-2 lg:flex-row">
           <span className="text-xl font-semibold">
             <Icon className="text-core-blue mb-[3px] inline size-6" icon="mdi:map-marker" />

@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { BEVY_RSVP_URL, socialLinks } from '@/lib/contants'
+import { BEVY_RSVP_URL, socialLinks } from '@/lib/constants'
 import { Button } from '@/components/Button'
 
 const navItems = [
