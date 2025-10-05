@@ -52,10 +52,11 @@ export default function Home() {
 
       <div className="content-container space-y-24 pb-20">
         <section>
-          活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹 lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹 lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </section>
 
         <section>
@@ -96,9 +97,17 @@ export default function Home() {
 
         <section>
           <SectionTitle id="sponsors" color="green">
-            合作夥伴
+            贊助夥伴
           </SectionTitle>
+          <div className="flex w-full flex-col flex-wrap items-center justify-center gap-5 sm:flex-row md:gap-8">
+            {/* 尚未加入 */}
+          </div>
+        </section>
 
+        <section>
+          <SectionTitle id="social-partners" color="blue">
+            社群夥伴
+          </SectionTitle>
           <div className="flex w-full flex-col flex-wrap items-center justify-center gap-5 sm:flex-row md:gap-8">
             <img
               className="w-full max-w-72"
@@ -107,12 +116,6 @@ export default function Home() {
               loading="lazy"
             ></img>
           </div>
-        </section>
-
-        <section>
-          <SectionTitle id="social-partners" color="blue">
-            社群夥伴
-          </SectionTitle>
         </section>
       </div>
     </main>

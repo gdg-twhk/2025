@@ -16,6 +16,7 @@ interface Symbol {
   className?: string
 }
 
+// TODO: 把 img 改成 svg jsx，這樣重整才不會閃爍
 // 符號數據 - 包含不同的符號、位置、大小和速度
 const symbols: Symbol[] = [
   {
