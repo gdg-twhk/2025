@@ -74,7 +74,13 @@ export function Menu() {
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         )}
       >
-        <Button className="h-11 text-xl" text="立刻報名" shape="pill" color="blue" onClick={() => window.open(BEVY_RSVP_URL, '_blank')} />
+        <Button
+          className="h-11 text-xl"
+          text="立刻報名"
+          shape="pill"
+          color="blue"
+          onClick={() => window.open(BEVY_RSVP_URL, '_blank')}
+        />
 
         {navItems.map((item) => (
           <Link className="text-xl" key={item.name} href={item.href} onClick={toggleMenu}>
@@ -98,7 +104,10 @@ export function Menu() {
       </div>
 
       {/* Mobile Menu Toggle */}
-      <button className="group mt-1 mr-1 flex size-12 flex-col items-center justify-center gap-1 lg:hidden" onClick={toggleMenu}>
+      <button
+        className="group mt-1 mr-1 flex size-12 flex-col items-center justify-center gap-1 lg:hidden"
+        onClick={toggleMenu}
+      >
         <span
           className={clsx(
             'h-1 w-7 bg-black transition-all duration-200 group-hover:w-4',
