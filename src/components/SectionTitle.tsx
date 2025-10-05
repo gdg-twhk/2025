@@ -10,10 +10,7 @@ interface SectionTitle {
 
 export function SectionTitle({ children, color, className, id }: SectionTitle) {
   return (
-    <h2
-      id={id}
-      className={clsx('mb-6 flex items-center justify-center text-3xl font-extrabold md:mb-8 md:text-4xl', className)}
-    >
+    <h2 id={id} className={clsx('mb-6 flex items-center justify-center text-3xl font-extrabold md:mb-8 md:text-4xl', className)}>
       <svg
         className={clsx('mt-[3px] mr-1 size-6 md:mr-1.5 md:size-8', {
           'fill-core-blue': color === 'blue',

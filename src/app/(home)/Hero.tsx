@@ -111,16 +111,8 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full overflow-x-clip">
-      <GridPattern
-        width={40}
-        height={40}
-        className="[mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:hidden"
-      />
-      <GridPattern
-        width={55}
-        height={55}
-        className="hidden [mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:block"
-      />
+      <GridPattern width={40} height={40} className="[mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:hidden" />
+      <GridPattern width={55} height={55} className="hidden [mask-image:linear-gradient(to_bottom,white_80%,transparent)] sm:block" />
 
       {symbols.map((symbol, index) => (
         <img
