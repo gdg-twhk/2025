@@ -38,12 +38,12 @@ export function Footer() {
           <h3 className="mb-4 font-bold">聯絡方式</h3>
           <a
             className="mb-3 flex gap-1 underline-offset-2 hover:underline"
-            href="mailto:organizers@gdg-taipei.org"
+            href="mailto:taipei@gdg.tw"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Icon icon="mdi:email-outline" className="size-6" />
-            organizers@gdg-taipei.org
+            taipei@gdg.tw
           </a>
           <a
             className="flex gap-1 underline-offset-2 hover:underline"
