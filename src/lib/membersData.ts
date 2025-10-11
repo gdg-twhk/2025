@@ -12,80 +12,105 @@ interface Member {
 const membersData: Record<Team, Member[]> = {
   總籌組: [
     {
-      name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      name: 'Ruby',
+      imgSrc: '/assets/members/Ruby.jpg',
       color: 'red',
     },
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'red',
     },
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'red',
     },
   ],
   議程組: [
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
   ],
   公關組: [
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'yellow',
     },
   ],
   文宣組: [
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'green',
     },
   ],
   場務組: [
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
   ],
   紀錄組: [
     {
       name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'red',
     },
   ],
   開發組: [
     {
-      name: '某某某',
-      imgSrc: 'https://i.pravatar.cc/300',
+      name: 'Alex Su',
+      imgSrc: 'https://avatars.githubusercontent.com/u/98323303?v=4',
+      color: 'yellow',
+    },
+    {
+      name: 'Hank Yu',
+      imgSrc: '/assets/members/Hank_Yu.jpg',
+      color: 'yellow',
+    },
+    {
+      name: 'Kashiwa',
+      imgSrc: 'https://avatars.githubusercontent.com/u/13825170?v=4',
+      color: 'yellow',
+    },
+    {
+      name: 'YuYu1015',
+      imgSrc: 'https://avatars.githubusercontent.com/u/44525760?v=4',
+      color: 'yellow',
+    },
+    {
+      name: 'Eric Hsiao',
+      imgSrc: '/assets/members/Eric_Hsiao.jpg',
+      color: 'yellow',
+    },
+    {
+      name: '小羊',
+      imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'yellow',
     },
   ],
