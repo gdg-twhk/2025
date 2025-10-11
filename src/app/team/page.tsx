@@ -13,7 +13,7 @@ export default function Team() {
       <div className="space-y-10">
         {Object.entries(membersData).map(([teamName, members]) => (
           <div key={teamName}>
-            <div className="flex flex-wrap  justify-center gap-x-6 gap-y-3">
+            <div className="flex flex-wrap  justify-center gap-x-6 gap-y-4">
               {members.map((member, index) => (
                 <div key={index} className="flex flex-col items-center">
                   <Avatar src={member.imgSrc} />

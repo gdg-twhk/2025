@@ -63,11 +63,36 @@ const membersData: Record<Team, Member[]> = {
   ],
   文宣組: [
     {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
+      name: 'Skye',
+      imgSrc: '/assets/members/Skye.jpg',
+      color: 'green',
+    },
+    {
+      name: 'Claudia',
+      imgSrc: '/assets/members/Claudia.jpg',
+      color: 'green',
+    },
+    {
+      name: 'YuHan',
+      imgSrc: '/assets/members/YuHan.jpg',
+      color: 'green',
+    },
+    {
+      name: '至真',
+      imgSrc: '/assets/members/至真.webp',
+      color: 'green',
+    },
+    {
+      name: 'Peko Lee',
+      imgSrc: '/assets/members/Peko_Lee.jpg',
       color: 'green',
     },
   ],
+
+
+
+
+
   場務組: [
     {
       name: '某某某',
