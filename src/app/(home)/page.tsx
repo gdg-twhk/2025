@@ -5,21 +5,52 @@ import { Hero } from './Hero'
 import { Button } from '@/components/Button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { SpeakerDialogContent } from '@/components/SpeakerDialogContent'
+import { MagicCard } from '@/components/ui/magic-card'
+import { Icon } from '@iconify/react'
+import { clsx } from 'clsx'
 
-// TODO: 這邊再挑一些照片
-const marqueePhotosSrc = [
-  '/assets/devfest-2024/1.JPG',
-  '/assets/devfest-2024/2.JPG',
-  '/assets/devfest-2024/3.JPG',
-  '/assets/devfest-2024/4.JPG',
-  '/assets/devfest-2024/5.JPG',
-  '/assets/devfest-2024/6.JPG',
-  '/assets/devfest-2024/7.JPG',
-  '/assets/devfest-2024/8.JPG',
+const marqueePhotosList = [
+  '/assets/devfest-2024/1.jpg',
+  '/assets/devfest-2024/2.jpg',
+  '/assets/devfest-2024/3.jpg',
+  '/assets/devfest-2024/4.jpg',
+  '/assets/devfest-2024/5.jpg',
+  '/assets/devfest-2024/6.jpg',
+  '/assets/devfest-2024/7.jpg',
+  '/assets/devfest-2024/8.jpg',
+  '/assets/devfest-2024/9.jpg',
+  '/assets/devfest-2024/10.jpg',
 ]
 
-const marqueeFirstRow = marqueePhotosSrc.slice(0, marqueePhotosSrc.length / 2)
-const marqueeSecondRow = marqueePhotosSrc.slice(marqueePhotosSrc.length / 2)
+const marqueeFirstRow = marqueePhotosList.slice(0, marqueePhotosList.length / 2)
+const marqueeSecondRow = marqueePhotosList.slice(marqueePhotosList.length / 2)
+
+const featureList = [
+  {
+    title: '全球性',
+    description: 'DevFest 在全球各地舉辦，為開發者提供了一個與世界各地的開發者交流的機會。',
+    icon: 'gridicons:globe',
+    colorClass: ' text-halftone-blue',
+    gradientFrom: '#4285f4', // --color-core-blue: #4285f4;
+    gradientTo: '#c3ecf6', //--color-pastel-blue: #c3ecf6;
+  },
+  {
+    title: '多元化',
+    description: 'DevFest 的內容涵蓋了各種技術主題，為開發者提供了一個學習新技能的機會。',
+    icon: 'clarity:atom-solid',
+    colorClass: ' text-halftone-red',
+    gradientFrom: '#ea4335', // --color-core-red: #ea4335;
+    gradientTo: '#f8d8d8', // --color-pastel-red: #f8d8d8;
+  },
+  {
+    title: '社群驅動',
+    description: 'DevFest 由 GDG 社群主辦，反映了社群的需求和興趣。',
+    icon: 'fluent:people-community-20-filled',
+    colorClass: ' text-halftone-yellow',
+    gradientFrom: '#f9ab00', // --color-core-yellow: #f9ab00;
+    gradientTo: '#ffe7a5', // --color-pastel-yellow: #ffe7a5;
+  },
+]
 
 export default function Home() {
   return (
@@ -29,7 +60,7 @@ export default function Home() {
         {marqueeFirstRow.map((src, index) => (
           <img
             key={index}
-            className="aspect-video h-40 rounded-lg border bg-gray-50"
+            className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
             src={src}
             alt={`DevFest 2024 photo ${index + 1}`}
             width={256}
@@ -41,7 +72,7 @@ export default function Home() {
         {marqueeSecondRow.map((src, index) => (
           <img
             key={index}
-            className="aspect-video h-40 rounded-lg border bg-gray-50"
+            className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
             src={src}
             alt={`DevFest 2024 photo ${index + 1}`}
             width={256}
@@ -51,12 +82,61 @@ export default function Home() {
       </Marquee>
 
       <div className="content-container space-y-24 pb-20">
-        <section>
-          活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹活動介紹 lorem ipsum dolor sit amet, consectetur
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <section className="mx-auto max-w-4xl text-lg">
+          <SectionTitle id="social-partners" color="green">
+            活動介紹
+          </SectionTitle>
+          <p>
+            <b>Google 開發者社群 (GDG)</b> 是一個由 Google
+            創立的全球性社群網絡，成員包含世界各地的開發人員和技術專家，而 <b> DevFest </b>這個由 GDG
+            主辦的年度技術大會，為開發者提供了一個聚集在一起精進技能、職涯和人脈的機會。
+          </p>
+
+          <p className="mt-4 mb-3 font-medium">以下是 DevFest 的一些主要特點：</p>
+
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {featureList.map((feature, index) => (
+              <MagicCard
+                key={index}
+                className="rounded-lg p-5 text-center"
+                gradientColor="#D9D9D955"
+                gradientFrom={feature.gradientFrom}
+                gradientTo={feature.gradientTo}
+              >
+                <Icon icon={feature.icon} className={clsx('mx-auto size-12', feature.colorClass)} />
+                <p className={clsx('mt-2 text-2xl font-semibold', feature.colorClass)}>{feature.title}</p>
+                <p className="mt-1">{feature.description}</p>
+              </MagicCard>
+            ))}
+          </div>
+
+          <div className="mt-5 space-y-3 rounded-lg bg-gray-50 p-6">
+            <h3 className="mb-4 text-xl font-semibold text-gray-800">📣 相關資訊</h3>
+
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                <span className="font-semibold">日期：</span>
+                <span>11 月 30 日 (星期日)</span>
+              </li>
+              <li>
+                <span className="font-semibold">時間：</span>
+                <span>上午 08:30 至 下午 06:00</span>
+              </li>
+              <li>
+                <span className="font-semibold">開始報到時間：</span>
+                <span>上午 08:30 - 09:00</span>
+              </li>
+              <li>
+                <span className="font-semibold">報到地點：</span>
+                <span className="underline-offset-4 hover:underline">
+                  <a href="https://maps.app.goo.gl/VzzuQTrRkmRoLtgu5" target="_blank">
+                    國立臺灣大學 博雅教學館 (南側入口大廳)
+                  </a>
+                  <Icon icon="tabler:external-link" className="-mt-1 ml-1 inline size-5" />
+                </span>
+              </li>
+            </ul>
+          </div>
         </section>
 
         <section>
@@ -95,14 +175,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section>
+        {/* TODO: 等待正式資料 */}
+        {/* <section>
           <SectionTitle id="sponsors" color="green">
             贊助夥伴
           </SectionTitle>
           <div className="flex w-full flex-col flex-wrap items-center justify-center gap-5 sm:flex-row md:gap-8">
-            {/* 尚未加入 */}
+
           </div>
-        </section>
+        </section> */}
 
         <section>
           <SectionTitle id="social-partners" color="blue">

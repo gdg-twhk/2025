@@ -4,7 +4,7 @@ import { socialLinks } from '@/lib/constants'
 export function Footer() {
   return (
     <footer className="bg-gray-100">
-      <div className="content-container grid grid-cols-1 gap-10 pt-10 pb-16 md:grid-cols-3">
+      <div className="content-container grid max-w-5xl grid-cols-1 gap-10 px-8 pt-10 pb-16 md:grid-cols-3 md:gap-16">
         <div className="md:pt-2">
           <img src="/assets/main-logo.png" width={340} height={40} alt="DevFest Taipei 2025 - Logo" />
         </div>

@@ -150,7 +150,13 @@ export function Hero() {
         <p className="mb-5 flex flex-col items-center gap-2 lg:flex-row">
           <span className="text-xl font-semibold">
             <Icon className="text-core-blue mb-[3px] inline size-6" icon="mdi:map-marker" />
-            台灣大學 博雅教學館
+            <a
+              className="underline-offset-4 hover:underline"
+              href="https://maps.app.goo.gl/VzzuQTrRkmRoLtgu5"
+              target="_blank"
+            >
+              台灣大學 博雅教學館
+            </a>
           </span>
           <span className="text-xl font-semibold">
             <Icon className="text-core-red mr-0.5 mb-0.5 inline size-6" icon="mdi:calendar-check" />
