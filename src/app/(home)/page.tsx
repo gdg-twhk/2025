@@ -110,7 +110,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-5 space-y-3 rounded-lg bg-gray-50 p-6">
+          <div className="mt-5 space-y-3 rounded-lg bg-gray-100 p-6">
             <h3 className="mb-4 text-xl font-semibold text-gray-800">📣 相關資訊</h3>
 
             <ul className="list-disc space-y-2 pl-5">
