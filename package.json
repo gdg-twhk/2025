@@ -9,7 +9,6 @@
     "start": "next start",
     "lint": "eslint ./src",
     "format": "prettier --write ./src",
-    "prepare": "husky",
     "preview": "http-server ./out",
     "deploy": "pnpm run build && firebase deploy --only hosting",
     "deploy:preview": "pnpm run build && firebase hosting:channel:deploy test-1 --expires 7d"
