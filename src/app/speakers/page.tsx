@@ -1,33 +1,15 @@
-'use client'
-import useSWR from 'swr'
-import { fetcher } from '@/lib/utils'
+import Link from 'next/link'
+import { Button } from '@/components/Button'
 
 export default function Speakers() {
-  const { data, error, isLoading } = useSWR('https://sessionize.com/api/v2/npbq801n/view/GridSmart', fetcher)
-
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Failed to load</div>
-
-  // console.log(data)
-
   return (
-    <main className="lg:pt-menu-height pb-20">
-      <h1 className="text-4xl font-bold">Speakers page</h1>
+    <main className="lg:pt-menu-height flex min-h-dvh flex-col items-center justify-center pt-10 pb-20">
+      <p className="text-core-red mt-20 text-center text-5xl font-bold">！敬請期待！</p>
+      <p className="my-8 text-center text-xl">詳細講者列表即將公布</p>
 
-      {data &&
-        data[0].rooms.map((room: any) => (
-          <div key={room.id} className="">
-            <h2 className="text-xl">{room.name}</h2>
-            <div className="pl-4">
-              {room.sessions.map((session: any) => (
-                <div key={session.id} className="mb-1">
-                  <h3 className="text-sm font-semibold">{session.title}</h3>
-                  <p>{session.startsAt}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+      <Link href="/">
+        <Button text="回到首頁" color="blue" />
+      </Link>
     </main>
   )
 }
