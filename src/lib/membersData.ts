@@ -33,26 +33,6 @@ const membersData: Record<Team, Member[]> = {
       imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
-    {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'blue',
-    },
-    {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'blue',
-    },
-    {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'blue',
-    },
-    {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'blue',
-    },
   ],
   公關組: [
     {
@@ -88,10 +68,6 @@ const membersData: Record<Team, Member[]> = {
       color: 'green',
     },
   ],
-
-
-
-
 
   場務組: [
     {
