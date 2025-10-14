@@ -1,9 +1,7 @@
 'use client'
-import { useState } from 'react'
+import clsx from 'clsx'
 import useSWR from 'swr'
 import { fetcher } from '@/lib/utils'
-import clsx from 'clsx'
-import { MagicCard } from '@/components/ui/magic-card'
 
 // TODO: 等正式議程出來後再補 speaker dialog
 // import { Dialog, DialogTrigger } from '@/components/ui/dialog'
