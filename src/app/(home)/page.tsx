@@ -3,11 +3,10 @@ import { SectionTitle } from '@/components/SectionTitle'
 import { Marquee } from '@/components/ui/marquee'
 import { Hero } from './Hero'
 import { Button } from '@/components/Button'
-import { Dialog, DialogTrigger } from '@/components/ui/dialog'
-import { SpeakerDialogContent } from '@/components/SpeakerDialogContent'
 import { MagicCard } from '@/components/ui/magic-card'
 import { Icon } from '@iconify/react'
 import { clsx } from 'clsx'
+import { TopSpeakerSection } from './TopSpeakerSection'
 
 const marqueePhotosList = [
   '/assets/devfest-2024/1.jpg',
@@ -143,27 +142,7 @@ export default function Home() {
           <SectionTitle id="speakers" color="yellow">
             議程講者
           </SectionTitle>
-          <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-            {/* TODO: 加入正式資料 */}
-            {Array(12)
-              .fill(0)
-              .map((_, index) => (
-                <Dialog key={index}>
-                  <DialogTrigger>
-                    <div
-                      key={index}
-                      className="relative aspect-square w-full cursor-pointer overflow-clip rounded-xl border border-gray-300 bg-gray-50 transition-transform duration-300 hover:scale-105"
-                    >
-                      <img className="size-full" src="https://i.pravatar.cc/300" loading="lazy" />
-                      <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-black/50 to-transparent" />
-                      <p className="absolute bottom-7 left-3 text-lg font-medium text-white">{'講者姓名'}</p>
-                      <p className="absolute bottom-2 left-3 text-sm text-gray-200">{'職稱/公司'}</p>
-                    </div>
-                  </DialogTrigger>
-                  <SpeakerDialogContent name={index} />
-                </Dialog>
-              ))}
-          </ul>
+          <TopSpeakerSection />
 
           <div className="mt-8 flex justify-center gap-4 sm:gap-6">
             <Link href="/speakers">
