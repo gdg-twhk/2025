@@ -1,3 +1,5 @@
+export const basePath = '/2025'
+
 export const BEVY_RSVP_URL =
   'https://gdg.community.dev/events/details/google-gdg-taipei-presents-devfest-taipei-2025/cohost-gdg-cloud-taipei'
 

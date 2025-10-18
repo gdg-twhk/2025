@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { SectionTitle } from '@/components/SectionTitle'
 import { Marquee } from '@/components/ui/marquee'
 import { Hero } from './Hero'
@@ -7,18 +8,19 @@ import { MagicCard } from '@/components/ui/magic-card'
 import { Icon } from '@iconify/react'
 import { clsx } from 'clsx'
 import { TopSpeakerSection } from './TopSpeakerSection'
+import { basePath } from '@/lib/constants'
 
 const marqueePhotosList = [
-  '/assets/devfest-2024/1.jpg',
-  '/assets/devfest-2024/2.jpg',
-  '/assets/devfest-2024/3.jpg',
-  '/assets/devfest-2024/4.jpg',
-  '/assets/devfest-2024/5.jpg',
-  '/assets/devfest-2024/6.jpg',
-  '/assets/devfest-2024/7.jpg',
-  '/assets/devfest-2024/8.jpg',
-  '/assets/devfest-2024/9.jpg',
-  '/assets/devfest-2024/10.jpg',
+  `${basePath}/assets/devfest-2024/1.jpg`,
+  `${basePath}/assets/devfest-2024/2.jpg`,
+  `${basePath}/assets/devfest-2024/3.jpg`,
+  `${basePath}/assets/devfest-2024/4.jpg`,
+  `${basePath}/assets/devfest-2024/5.jpg`,
+  `${basePath}/assets/devfest-2024/6.jpg`,
+  `${basePath}/assets/devfest-2024/7.jpg`,
+  `${basePath}/assets/devfest-2024/8.jpg`,
+  `${basePath}/assets/devfest-2024/9.jpg`,
+  `${basePath}/assets/devfest-2024/10.jpg`,
 ]
 
 const marqueeFirstRow = marqueePhotosList.slice(0, marqueePhotosList.length / 2)
@@ -57,7 +59,7 @@ export default function Home() {
       <Hero />
       <Marquee className="mb-5 [--duration:24s]">
         {marqueeFirstRow.map((src, index) => (
-          <img
+          <Image
             key={index}
             className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
             src={src}
@@ -69,7 +71,7 @@ export default function Home() {
       </Marquee>
       <Marquee className="mb-16 [--duration:24s]" reverse>
         {marqueeSecondRow.map((src, index) => (
-          <img
+          <Image
             key={index}
             className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
             src={src}

@@ -2,6 +2,7 @@
 import clsx from 'clsx'
 import useSWR from 'swr'
 import { fetcher } from '@/lib/utils'
+import Image from 'next/image'
 
 // TODO: 等正式議程出來後再補 speaker dialog
 // import { Dialog, DialogTrigger } from '@/components/ui/dialog'
@@ -57,7 +58,7 @@ export function TopSpeakerSection() {
           key={index}
           className="relative aspect-square w-full overflow-clip rounded-xl border border-gray-300 bg-gray-100 transition-transform duration-300 hover:scale-105"
         >
-          <img className="size-full" src={speaker.profilePicture} loading="lazy" />
+          <Image className="size-full" src={speaker.profilePicture} alt={speaker.fullName} width={240} height={240} />
           <div className="absolute bottom-0 left-0 h-20 w-full bg-gradient-to-t from-gray-700/70 to-transparent" />
           <p className="absolute bottom-7 left-3 text-xl font-semibold text-white lg:bottom-8 lg:text-2xl">
             {speaker.fullName}

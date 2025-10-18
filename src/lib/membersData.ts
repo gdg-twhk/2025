@@ -1,4 +1,5 @@
 import { BrandColor } from '@/lib/types'
+import { basePath } from '@/lib/constants'
 
 type Team = '總籌組' | '議程組' | '公關組' | '文宣組' | '場務組' | '紀錄組' | '開發組'
 
@@ -13,7 +14,7 @@ const membersData: Record<Team, Member[]> = {
   總籌組: [
     {
       name: 'Ruby',
-      imgSrc: '/assets/members/Ruby.jpg',
+      imgSrc: `${basePath}/assets/members/Ruby.jpg`,
       color: 'red',
     },
     {
@@ -44,27 +45,27 @@ const membersData: Record<Team, Member[]> = {
   文宣組: [
     {
       name: 'Skye',
-      imgSrc: '/assets/members/Skye.jpg',
+      imgSrc: `${basePath}/assets/members/Skye.jpg`,
       color: 'green',
     },
     {
       name: 'Claudia',
-      imgSrc: '/assets/members/Claudia.jpg',
+      imgSrc: `${basePath}/assets/members/Claudia.jpg`,
       color: 'green',
     },
     {
       name: 'YuHan',
-      imgSrc: '/assets/members/YuHan.jpg',
+      imgSrc: `${basePath}/assets/members/YuHan.jpg`,
       color: 'green',
     },
     {
       name: '至真',
-      imgSrc: '/assets/members/至真.webp',
+      imgSrc: `${basePath}/assets/members/至真.webp`,
       color: 'green',
     },
     {
       name: 'Peko Lee',
-      imgSrc: '/assets/members/Peko_Lee.jpg',
+      imgSrc: `${basePath}/assets/members/Peko_Lee.jpg`,
       color: 'green',
     },
   ],
@@ -91,7 +92,7 @@ const membersData: Record<Team, Member[]> = {
     },
     {
       name: 'Hank Yu',
-      imgSrc: '/assets/members/Hank_Yu.jpg',
+      imgSrc: `${basePath}/assets/members/Hank_Yu.jpg`,
       color: 'yellow',
     },
     {
@@ -106,7 +107,7 @@ const membersData: Record<Team, Member[]> = {
     },
     {
       name: 'Eric Hsiao',
-      imgSrc: '/assets/members/Eric_Hsiao.jpg',
+      imgSrc: `${basePath}/assets/members/Eric_Hsiao.jpg`,
       color: 'yellow',
     },
     {

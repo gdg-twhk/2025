@@ -1,9 +1,10 @@
 'use client'
 import { useState, useEffect, useRef, useCallback } from 'react'
+import Image from 'next/image'
 import { clsx } from 'clsx'
 import { Button } from '@/components/Button'
 import { GridPattern } from '@/components/ui/grid-pattern'
-import { BEVY_RSVP_URL } from '@/lib/constants'
+import { basePath, BEVY_RSVP_URL } from '@/lib/constants'
 import { Icon } from '@iconify/react'
 
 interface Symbol {
@@ -20,7 +21,7 @@ interface Symbol {
 // 符號數據 - 包含不同的符號、位置、大小和速度
 const symbols: Symbol[] = [
   {
-    src: '/assets/kv-symbols/1.svg',
+    src: `${basePath}/assets/kv-symbols/1.svg`,
     x: 90,
     y: 40,
     width: 18,
@@ -28,16 +29,16 @@ const symbols: Symbol[] = [
     offsetSpeed: -0.6,
     className: 'hidden md:block',
   },
-  { src: '/assets/kv-symbols/2.svg', x: 10, y: 60, width: 45, scrollSpeed: 0.3, offsetSpeed: -0.8 },
-  { src: '/assets/kv-symbols/3.svg', x: 75, y: 75, width: 40, scrollSpeed: 0.6, offsetSpeed: -0.5 },
-  { src: '/assets/kv-symbols/4.svg', x: 60, y: 15, width: 40, scrollSpeed: 0.9, offsetSpeed: -0.3 },
-  { src: '/assets/kv-symbols/5.svg', x: 30, y: 85, width: 40, scrollSpeed: 0.4, offsetSpeed: -0.5 },
-  { src: '/assets/kv-symbols/6.svg', x: 85, y: 15, width: 40, scrollSpeed: 0.7, offsetSpeed: -0.7 },
-  { src: '/assets/kv-symbols/7.svg', x: 12, y: 20, width: 40, scrollSpeed: 0.5, offsetSpeed: -0.4 },
-  { src: '/assets/kv-symbols/8.svg', x: 70, y: 30, width: 40, scrollSpeed: 1.2, offsetSpeed: -0.5 },
-  { src: '/assets/kv-symbols/9.svg', x: 50, y: 80, width: 21, scrollSpeed: 0.8, offsetSpeed: -0.2 },
+  { src: `${basePath}/assets/kv-symbols/2.svg`, x: 10, y: 60, width: 45, scrollSpeed: 0.3, offsetSpeed: -0.8 },
+  { src: `${basePath}/assets/kv-symbols/3.svg`, x: 75, y: 75, width: 40, scrollSpeed: 0.6, offsetSpeed: -0.5 },
+  { src: `${basePath}/assets/kv-symbols/4.svg`, x: 60, y: 15, width: 40, scrollSpeed: 0.9, offsetSpeed: -0.3 },
+  { src: `${basePath}/assets/kv-symbols/5.svg`, x: 30, y: 85, width: 40, scrollSpeed: 0.4, offsetSpeed: -0.5 },
+  { src: `${basePath}/assets/kv-symbols/6.svg`, x: 85, y: 15, width: 40, scrollSpeed: 0.7, offsetSpeed: -0.7 },
+  { src: `${basePath}/assets/kv-symbols/7.svg`, x: 12, y: 20, width: 40, scrollSpeed: 0.5, offsetSpeed: -0.4 },
+  { src: `${basePath}/assets/kv-symbols/8.svg`, x: 70, y: 30, width: 40, scrollSpeed: 1.2, offsetSpeed: -0.5 },
+  { src: `${basePath}/assets/kv-symbols/9.svg`, x: 50, y: 80, width: 21, scrollSpeed: 0.8, offsetSpeed: -0.2 },
   {
-    src: '/assets/kv-symbols/10.svg',
+    src: `${basePath}/assets/kv-symbols/10.svg`,
     x: 25,
     y: 30,
     width: 17,
@@ -45,9 +46,9 @@ const symbols: Symbol[] = [
     offsetSpeed: -0.9,
     className: 'md:!left-[20%] md:!top-[35%]',
   },
-  { src: '/assets/kv-symbols/11.svg', x: 80, y: 60, width: 23, scrollSpeed: 1.4, offsetSpeed: -0.8 },
+  { src: `${basePath}/assets/kv-symbols/11.svg`, x: 80, y: 60, width: 23, scrollSpeed: 1.4, offsetSpeed: -0.8 },
   {
-    src: '/assets/kv-symbols/12.svg',
+    src: `${basePath}/assets/kv-symbols/12.svg`,
     x: 30,
     y: 10,
     width: 30,
@@ -55,9 +56,9 @@ const symbols: Symbol[] = [
     offsetSpeed: -0.55,
     className: 'md:!top-[24%]',
   },
-  { src: '/assets/kv-symbols/15.svg', x: 65, y: 80, width: 24, scrollSpeed: 0.6, offsetSpeed: -1.2 },
-  { src: '/assets/kv-symbols/16.svg', x: 16, y: 76, width: 24, scrollSpeed: 1.6, offsetSpeed: -0.4 },
-  { src: '/assets/kv-symbols/18.svg', x: 90, y: 85, width: 24, scrollSpeed: 0.8, offsetSpeed: -0.6 },
+  { src: `${basePath}/assets/kv-symbols/15.svg`, x: 65, y: 80, width: 24, scrollSpeed: 0.6, offsetSpeed: -1.2 },
+  { src: `${basePath}/assets/kv-symbols/16.svg`, x: 16, y: 76, width: 24, scrollSpeed: 1.6, offsetSpeed: -0.4 },
+  { src: `${basePath}/assets/kv-symbols/18.svg`, x: 90, y: 85, width: 24, scrollSpeed: 0.8, offsetSpeed: -0.6 },
 ]
 
 export function Hero() {
@@ -138,9 +139,9 @@ export function Hero() {
       ))}
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-12">
-        <img
+        <Image
           className="mb-10 min-w-1/3"
-          src="/assets/key-visual.png"
+          src={`${basePath}/assets/key-visual.png`}
           alt="logo"
           width={400}
           height={115}
