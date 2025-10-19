@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import useSWR from 'swr'
 import { fetcher } from '@/lib/utils'
 import Image from 'next/image'
+import { SimpleSpeaker, SpeakerResponse } from '@/lib/types'
 
 // TODO: 等正式議程出來後再補 speaker dialog
 // import { Dialog, DialogTrigger } from '@/components/ui/dialog'
@@ -30,26 +31,21 @@ const topSpeakersId = [
   'e964b091-45b0-41e5-92ed-92cef687abb2',
 ]
 
-interface SimpleSpeaker {
-  id: string
-  fullName: string
-  tagLine: string
-  profilePicture: string
-}
-
 export function TopSpeakerSection() {
   const { data, error, isLoading } = useSWR('https://sessionize.com/api/v2/qwnpmdyr/view/Speakers', fetcher)
 
   const topSpeakers: SimpleSpeaker[] = data
     ? data
-        .filter((speaker: SimpleSpeaker) => topSpeakersId.includes(speaker.id))
-        .map((speaker: SimpleSpeaker) => ({
+        .filter((speaker: SpeakerResponse) => topSpeakersId.includes(speaker.id))
+        .map((speaker: SpeakerResponse) => ({
           id: speaker.id,
-          fullName: speaker.fullName,
+          displayName: speaker.questionAnswers[0].answer,
           tagLine: speaker.tagLine,
           profilePicture: speaker.profilePicture,
         }))
     : []
+
+  console.log(data)
 
   return (
     <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
@@ -58,10 +54,16 @@ export function TopSpeakerSection() {
           key={index}
           className="relative aspect-square w-full overflow-clip rounded-xl border border-gray-300 bg-gray-100 transition-transform duration-300 hover:scale-105"
         >
-          <Image className="size-full" src={speaker.profilePicture} alt={speaker.fullName} width={240} height={240} />
+          <Image
+            className="size-full"
+            src={speaker.profilePicture}
+            alt={speaker.displayName}
+            width={240}
+            height={240}
+          />
           <div className="absolute bottom-0 left-0 h-20 w-full bg-gradient-to-t from-gray-700/70 to-transparent" />
           <p className="absolute bottom-7 left-3 text-xl font-semibold text-white lg:bottom-8 lg:text-2xl">
-            {speaker.fullName}
+            {speaker.displayName}
           </p>
           <p
             className={clsx('absolute bottom-2 left-3 w-[90%] truncate text-sm lg:text-base', {
