@@ -74,7 +74,7 @@ export default function SpeakerDialog({ speaker, sessions, index }: { speaker: S
               {(sessions && sessions[0]?.title) || speaker.sessions?.[0]?.name}
             </p>
             {sessions && sessions[0] && (sessions[0].startsAt || sessions[0].endsAt) && (
-              <div className="mt-1 flex items-center gap-1 text-xs text-gray-600">
+              <div className="rounded-full py-1 pl-1 bg-zinc-100 mt-1 flex items-center gap-1 text-xs text-gray-600">
                 <ClockIcon className="shrink-0" />
                 <span>{formatDateRange(sessions[0].startsAt, sessions[0].endsAt)}</span>
               </div>
@@ -110,7 +110,7 @@ export default function SpeakerDialog({ speaker, sessions, index }: { speaker: S
           </div>
         </DialogHeader>
 
-        <div className="mt-4 text-sm leading-relaxed space-y-4">
+        <div className="text-sm leading-relaxed space-y-4">
           <p>{speaker.bio}</p>
 
           {/* Talks list (supports multiple sessions) */}
