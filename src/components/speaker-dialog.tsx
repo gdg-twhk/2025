@@ -7,6 +7,9 @@ import Image from "next/image";
 import { SpeakerResponse, DetailedSession } from "@/lib/types";
 import clsx from "clsx"; 
 import type React from "react";
+import { LXGW_WenKai_Mono_TC } from 'next/font/google'
+
+const LXGW = LXGW_WenKai_Mono_TC({ subsets: ['latin'], weight: ['400'] });
 
 export default function SpeakerDialog({ speaker, sessions, index }: { speaker: SpeakerResponse , sessions: DetailedSession[], index: number}) {
   const TZ = 'Asia/Taipei';
@@ -111,7 +114,7 @@ export default function SpeakerDialog({ speaker, sessions, index }: { speaker: S
         </DialogHeader>
 
         <div className="text-sm leading-relaxed space-y-4">
-          <p>{speaker.bio}</p>
+          <p className={LXGW.className}>{speaker.bio}</p>
 
           {/* Talks list (supports multiple sessions) */}
           {(sessions && sessions.length > 0) ? (
