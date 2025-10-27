@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import useSWR from 'swr'
 import { fetcher } from '@/lib/utils'
 import Image from 'next/image'
-import { SimpleSpeaker, SpeakerResponse } from '@/lib/types'
+import { SimpleSpeaker, Speaker } from '@/lib/types'
 
 // TODO: 等正式議程出來後再補 speaker dialog
 // import { Dialog, DialogTrigger } from '@/components/ui/dialog'
@@ -36,8 +36,8 @@ export function TopSpeakerSection() {
 
   const topSpeakers: SimpleSpeaker[] = data
     ? data
-        .filter((speaker: SpeakerResponse) => topSpeakersId.includes(speaker.id))
-        .map((speaker: SpeakerResponse) => ({
+        .filter((speaker: Speaker) => topSpeakersId.includes(speaker.id))
+        .map((speaker: Speaker) => ({
           id: speaker.id,
           displayName: speaker.questionAnswers[0].answer,
           tagLine: speaker.tagLine,

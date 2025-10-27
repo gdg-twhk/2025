@@ -10,7 +10,7 @@ interface QuestionAnswer {
   answerExtra: string | null
 }
 
-export interface SpeakerResponse {
+export interface Speaker {
   id: string
   firstName: string
   lastName: string
