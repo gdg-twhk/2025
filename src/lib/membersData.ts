@@ -13,18 +13,18 @@ interface Member {
 const membersData: Record<Team, Member[]> = {
   總籌組: [
     {
+      name: '房志剛 Rainer Fang',
+      imgSrc: 'https://avatars.githubusercontent.com/u/15196250?v=4',
+      color: 'red',
+    },
+    {
       name: 'Ruby',
       imgSrc: `${basePath}/assets/members/Ruby.jpg`,
       color: 'red',
     },
     {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'red',
-    },
-    {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
+      name: 'Issac',
+      imgSrc: `${basePath}/assets/members/Issac.jpg`,
       color: 'red',
     },
   ],
@@ -37,8 +37,8 @@ const membersData: Record<Team, Member[]> = {
   ],
   公關組: [
     {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
+      name: 'Ruby',
+      imgSrc: `${basePath}/assets/members/Ruby.jpg`,
       color: 'yellow',
     },
   ],
@@ -72,14 +72,35 @@ const membersData: Record<Team, Member[]> = {
 
   場務組: [
     {
-      name: '某某某',
-      imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'blue',
+      name: 'Issac',
+      imgSrc: `${basePath}/assets/members/Issac.jpg`,
+      color: 'red',
+    },
+    {
+      name: 'Joe Hung',
+      imgSrc: `${basePath}/assets/members/Joe_Hung.jpg`,
+      color: 'red',
     },
   ],
   紀錄組: [
     {
-      name: '某某某',
+      name: '小群',
+      imgSrc: 'https://avatars.githubusercontent.com/u/19748848',
+      color: 'red',
+    },
+    {
+      name: '攝影海豹',
+      imgSrc: `${basePath}/assets/members/攝影海豹.jpg`,
+      color: 'red',
+    },
+
+    {
+      name: '月太',
+      imgSrc: 'https://avatar.iran.liara.run/public',
+      color: 'red',
+    },
+    {
+      name: 'Bun_.',
       imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'red',
     },
@@ -112,7 +133,7 @@ const membersData: Record<Team, Member[]> = {
     },
     {
       name: '小羊',
-      imgSrc: 'https://avatar.iran.liara.run/public',
+      imgSrc: 'https://avatars.githubusercontent.com/u/33981880?v=4',
       color: 'yellow',
     },
   ],
