@@ -9,11 +9,10 @@ interface Member {
   color: BrandColor
 }
 
-// TODO: 換成正式資料
 const membersData: Record<Team, Member[]> = {
   總籌組: [
     {
-      name: '房志剛 Rainer Fang',
+      name: 'Rainer',
       imgSrc: 'https://avatars.githubusercontent.com/u/15196250?v=4',
       color: 'red',
     },
@@ -30,18 +29,12 @@ const membersData: Record<Team, Member[]> = {
   ],
   議程組: [
     {
-      name: '某某某',
+      name: 'Dion',
       imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
   ],
-  公關組: [
-    {
-      name: 'Ruby',
-      imgSrc: `${basePath}/assets/members/Ruby.jpg`,
-      color: 'yellow',
-    },
-  ],
+
   文宣組: [
     {
       name: 'Skye',
@@ -86,23 +79,23 @@ const membersData: Record<Team, Member[]> = {
     {
       name: '小群',
       imgSrc: 'https://avatars.githubusercontent.com/u/19748848',
-      color: 'red',
+      color: 'blue',
     },
     {
       name: '攝影海豹',
       imgSrc: `${basePath}/assets/members/攝影海豹.jpg`,
-      color: 'red',
+      color: 'blue',
     },
 
     {
       name: '月太',
       imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'red',
+      color: 'blue',
     },
     {
       name: 'Bun_.',
       imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'red',
+      color: 'blue',
     },
   ],
   開發組: [
@@ -135,6 +128,13 @@ const membersData: Record<Team, Member[]> = {
       name: '小羊',
       imgSrc: 'https://avatars.githubusercontent.com/u/33981880?v=4',
       color: 'yellow',
+    },
+  ],
+  公關組: [
+    {
+      name: 'Ruby',
+      imgSrc: `${basePath}/assets/members/Ruby.jpg`,
+      color: 'green',
     },
   ],
 }
