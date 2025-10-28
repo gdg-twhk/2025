@@ -48,7 +48,7 @@ export function SpeakerInfoDialog({ speaker, sessions }: SpeakerInfoDialogProps)
                 <ExternalLinkIcon className="-mt-[3px] ml-1 inline-block size-4 md:size-5" />
               </h4>
             </Link>
-            <div className="mt-1 space-y-1 text-sm md:text-base text-zinc-700">
+            <div className="mt-1 space-y-1 text-sm text-zinc-700 md:text-base">
               <p className="flex items-center gap-1">
                 <ClockIcon className="size-4 text-slate-500" />
                 <span className="mr-1.5 text-slate-500">時間</span>
