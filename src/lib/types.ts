@@ -1,5 +1,17 @@
 export type BrandColor = 'blue' | 'green' | 'yellow' | 'red'
 
+export type Topic =
+  | 'AI / Machine Learning'
+  | 'Go'
+  | 'Cloud'
+  | 'Google Workspace'
+  | 'Web Technologies'
+  | 'Earth Engine & Sustainability'
+  | 'Android'
+  | 'Flutter'
+  | 'Firebase'
+  | 'Cyber Security'
+
 /** 自訂問題 */
 interface QuestionAnswer {
   id: number
@@ -43,7 +55,7 @@ export interface Session {
   endsAt: string | null // 結束時間
   room: string | null // 博 101
   speakers: {
-    id: number
+    id: string
     name: string
   }[]
   categories: {

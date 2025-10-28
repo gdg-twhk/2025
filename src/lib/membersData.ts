@@ -13,7 +13,7 @@ interface Member {
 const membersData: Record<Team, Member[]> = {
   總籌組: [
     {
-      name: '房志剛 Rainer Fang',
+      name: 'Rainer',
       imgSrc: 'https://avatars.githubusercontent.com/u/15196250?v=4',
       color: 'red',
     },
@@ -86,23 +86,23 @@ const membersData: Record<Team, Member[]> = {
     {
       name: '小群',
       imgSrc: 'https://avatars.githubusercontent.com/u/19748848',
-      color: 'red',
+      color: 'blue',
     },
     {
       name: '攝影海豹',
       imgSrc: `${basePath}/assets/members/攝影海豹.jpg`,
-      color: 'red',
+      color: 'blue',
     },
 
     {
       name: '月太',
       imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'red',
+      color: 'blue',
     },
     {
       name: 'Bun_.',
       imgSrc: 'https://avatar.iran.liara.run/public',
-      color: 'red',
+      color: 'blue',
     },
   ],
   開發組: [

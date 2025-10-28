@@ -12,7 +12,7 @@ const navItems = [
   { name: '參與資訊', href: '/info' },
   { name: '議程表', href: '/sessions' },
   { name: '講者列表', href: '/speakers' },
-  // { name: '籌備團隊', href: '/team' }, // TODO: 等名冊都準備好再顯示
+  { name: '籌備團隊', href: '/team' }, // TODO: 等名冊都準備好再顯示
 ]
 
 export function Menu() {

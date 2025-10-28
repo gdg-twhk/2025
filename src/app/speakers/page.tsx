@@ -6,7 +6,6 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { useGlobalDataStore } from '@/store/GlobalDataProvider'
 import { SectionTitle } from '@/components/SectionTitle'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
-import { Speaker, Session } from '@/lib/types'
 import { SpeakerInfoDialog } from './SpeakerInfoDialog'
 
 export default function Speakers() {
@@ -39,11 +38,10 @@ export default function Speakers() {
         <p className="mt-20 text-center text-xl">講者資料載入中......</p>
       ) : (
         <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-4 px-5 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-          {speakers.map((speaker: Speaker) => {
-            const speakerSessionIds = new Set(speaker.sessions.map((session) => session.id.toString()))
-            const sessionsForSpeaker: Session[] = sessions.filter((session: Session) =>
-              speakerSessionIds.has(session.id)
-            )
+          {speakers.map((speaker) => {
+            // EXPLAIN: 一位講者可能有多場議程
+            const speakerSessionsId = new Set(speaker.sessions.map((session) => session.id.toString()))
+            const sessionsForSpeaker = sessions.filter((session) => speakerSessionsId.has(session.id))
             const colorClasses = ['text-core-blue', 'text-core-green', 'text-core-yellow', 'text-core-red']
             const randomColorClass = colorClasses[Math.floor(Math.random() * colorClasses.length)]
             const speakerName = speaker.questionAnswers?.[0]?.answer
