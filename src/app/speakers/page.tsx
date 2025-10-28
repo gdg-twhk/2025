@@ -69,9 +69,9 @@ function SpeakersContent() {
               >
                 <DialogTrigger asChild>
                   <div className="multi-border-card cursor-pointer rounded-2xl transition-transform hover:scale-[1.02]">
-                    <div className="relative aspect-square w-full overflow-hidden">
+                    <div className="relative aspect-square w-full overflow-clip rounded-t-[15px] bg-gray-200">
                       <Image
-                        className="size-full rounded-t-2xl border-b border-slate-200 object-cover"
+                        className="size-full border-b border-slate-200 object-cover"
                         src={speaker.profilePicture}
                         alt={speakerName}
                         width={250}
