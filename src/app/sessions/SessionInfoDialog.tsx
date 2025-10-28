@@ -21,7 +21,7 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
       <DialogHeader className="flex flex-col gap-2 p-0 text-left">
         <Badge className={`text-sm ${topicClassnames[sessionTopic].badge}`}>{sessionTopic}</Badge>
         <DialogTitle className="text-2xl leading-tight font-bold lg:text-3xl">{session.title}</DialogTitle>
-        <p className="flex items-center text-sm text-slate-500">
+        <p className="flex items-center text-sm text-slate-500 md:text-base">
           <ClockIcon className="mr-1 inline-block size-4" />
           時間
           <span className="ml-2 text-zinc-800">
@@ -30,7 +30,7 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
               : '尚未公布'}
           </span>
         </p>
-        <p className="flex items-center text-sm text-slate-500">
+        <p className="flex items-center text-sm text-slate-500 md:text-base">
           <MapPinIcon className="mr-1 inline-block size-4" />
           教室
           <span className="ml-2 text-zinc-800">{session.room || '尚未公布'}</span>
@@ -40,7 +40,7 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
           {speakers.map((speaker) => (
             <Link
               key={speaker.id}
-              className="flex items-center gap-1.5 underline-offset-4 hover:underline"
+              className="flex items-center gap-1.5 md:gap-2 underline-offset-4 hover:underline"
               href={`/speakers?name=${speaker.questionAnswers?.[0]?.answer}`}
             >
               <Image
@@ -56,9 +56,9 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
         </div>
       </DialogHeader>
 
-      <hr className="my-3" />
+      <hr className="my-3 md:my-5" />
 
-      <p className="px-1 text-zinc-800">{session.description}</p>
+      <p className="px-1 text-base text-zinc-800 md:text-lg">{session.description}</p>
     </DialogContent>
   )
 }

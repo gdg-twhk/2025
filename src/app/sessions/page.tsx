@@ -17,20 +17,20 @@ export default function Sessions() {
   const { speakers, sessions } = useGlobalDataStore((state) => state)
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [openSessionTitle, setOpenSessionTitle] = useState<string | null>(null)
+  const [openSessionId, setOpenSessionId] = useState<string | null>(null)
 
-  // 當搜尋參數 title 變動時，自動打開對應 Dialog
+  // 當搜尋參數 id 變動時，自動打開對應 Dialog
   useEffect(() => {
-    const sessionTitle = searchParams.get('title')
-    setOpenSessionTitle(sessionTitle)
+    const sessionId = searchParams.get('id')
+    setOpenSessionId(sessionId)
   }, [searchParams])
 
-  // 關閉 Dialog 時清除搜尋參數 title
+  // 關閉 Dialog 時清除搜尋參數 id
   const handleClose = () => {
     const params = new URLSearchParams(searchParams.toString())
-    params.delete('title')
+    params.delete('id')
     router.replace(`?${params.toString()}`, { scroll: false })
-    setOpenSessionTitle(null)
+    setOpenSessionId(null)
   }
 
   return (
@@ -52,11 +52,11 @@ export default function Sessions() {
             return (
               <Dialog
                 key={session.id}
-                open={openSessionTitle === session.title}
+                open={openSessionId === session.id}
                 onOpenChange={(open) => {
                   if (open) {
-                    router.replace(`?title=${encodeURIComponent(session.title)}`, { scroll: false })
-                    setOpenSessionTitle(session.title)
+                    router.replace(`?id=${session.id}`, { scroll: false })
+                    setOpenSessionId(session.id)
                   } else {
                     handleClose()
                   }
