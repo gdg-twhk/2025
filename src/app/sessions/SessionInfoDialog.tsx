@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ClockIcon, MapPinIcon } from 'lucide-react'
@@ -40,7 +39,7 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
           {speakers.map((speaker) => (
             <Link
               key={speaker.id}
-              className="flex items-center gap-1.5 md:gap-2 underline-offset-4 hover:underline"
+              className="flex items-center gap-1.5 underline-offset-4 hover:underline md:gap-2"
               href={`/speakers?name=${speaker.questionAnswers?.[0]?.answer}`}
             >
               <Image

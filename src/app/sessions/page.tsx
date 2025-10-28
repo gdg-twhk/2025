@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 import { MapPinIcon, ClockIcon } from 'lucide-react'
@@ -13,7 +13,15 @@ import { formatTime } from '@/lib/utils'
 import { SessionInfoDialog } from './SessionInfoDialog'
 import { topicClassnames } from '@/lib/constants'
 
-export default function Sessions() {
+export default function SessionsPage() {
+  return (
+    <Suspense>
+      <SessionsContent />
+    </Suspense>
+  )
+}
+
+function SessionsContent() {
   const { speakers, sessions } = useGlobalDataStore((state) => state)
   const searchParams = useSearchParams()
   const router = useRouter()

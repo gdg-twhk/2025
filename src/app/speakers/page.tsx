@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -8,7 +8,15 @@ import { SectionTitle } from '@/components/SectionTitle'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { SpeakerInfoDialog } from './SpeakerInfoDialog'
 
-export default function Speakers() {
+export default function SpeakersPage() {
+  return (
+    <Suspense>
+      <SpeakersContent />
+    </Suspense>
+  )
+}
+
+function SpeakersContent() {
   const { speakers, sessions } = useGlobalDataStore((state) => state)
   const searchParams = useSearchParams()
   const router = useRouter()
