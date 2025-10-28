@@ -9,7 +9,6 @@ interface Member {
   color: BrandColor
 }
 
-// TODO: 換成正式資料
 const membersData: Record<Team, Member[]> = {
   總籌組: [
     {
@@ -30,18 +29,12 @@ const membersData: Record<Team, Member[]> = {
   ],
   議程組: [
     {
-      name: '某某某',
+      name: 'Dion',
       imgSrc: 'https://avatar.iran.liara.run/public',
       color: 'blue',
     },
   ],
-  公關組: [
-    {
-      name: 'Ruby',
-      imgSrc: `${basePath}/assets/members/Ruby.jpg`,
-      color: 'yellow',
-    },
-  ],
+
   文宣組: [
     {
       name: 'Skye',
@@ -135,6 +128,13 @@ const membersData: Record<Team, Member[]> = {
       name: '小羊',
       imgSrc: 'https://avatars.githubusercontent.com/u/33981880?v=4',
       color: 'yellow',
+    },
+  ],
+  公關組: [
+    {
+      name: 'Ruby',
+      imgSrc: `${basePath}/assets/members/Ruby.jpg`,
+      color: 'green',
     },
   ],
 }
