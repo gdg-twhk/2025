@@ -6,8 +6,9 @@ import clsx from 'clsx'
 import type React from 'react'
 import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
+import { formatTime } from '@/lib/utils'
 
-interface SessionInfoDialogProps {
+interface SpeakerInfoDialogProps {
   speaker: Speaker
   sessions: Session[]
 }
@@ -15,46 +16,9 @@ interface SessionInfoDialogProps {
 const colorClasses = ['text-core-blue', 'text-core-green', 'text-core-yellow', 'text-core-red']
 const randomColorClass = colorClasses[Math.floor(Math.random() * colorClasses.length)]
 
-export function SessionInfoDialog({ speaker, sessions }: SessionInfoDialogProps) {
+export function SpeakerInfoDialog({ speaker, sessions }: SpeakerInfoDialogProps) {
   const isBioTooLong = speaker.bio.length > 200
   const [showMoreBio, setShowMoreBio] = useState(isBioTooLong)
-
-  function formatTime(iso?: string) {
-    if (!iso) return ''
-    try {
-      const d = new Date(iso)
-      return d.toLocaleTimeString('zh-TW', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-        timeZone: 'Asia/Taipei',
-      })
-    } catch {
-      return ''
-    }
-  }
-
-  function formatDate(iso?: string) {
-    if (!iso) return ''
-    try {
-      const d = new Date(iso)
-      const year = d.toLocaleString('zh-TW', { year: 'numeric', timeZone: 'Asia/Taipei' })
-      const month = d.toLocaleString('zh-TW', { month: 'numeric', timeZone: 'Asia/Taipei' })
-      const day = d.toLocaleString('zh-TW', { day: '2-digit', timeZone: 'Asia/Taipei' })
-      return `${year}${month}${day}`
-    } catch {
-      return ''
-    }
-  }
-
-  function formatDateRange(start?: string, end?: string) {
-    if (!start && !end) return ''
-    const dateBase = formatDate(start || end)
-    const s = formatTime(start)
-    const e = formatTime(end)
-    if (s && e) return `${dateBase} ${s} - ${e}`
-    return `${dateBase} ${s || e}`.trim()
-  }
 
   return (
     <DialogContent className="h-3/4 max-h-3/4 overflow-y-auto px-4 md:px-5 lg:h-3/5 lg:max-h-3/5">
@@ -94,7 +58,9 @@ export function SessionInfoDialog({ speaker, sessions }: SessionInfoDialogProps)
               <p className="flex items-center gap-1">
                 <ClockIcon className="size-4 text-slate-500" />
                 <span className="mr-1.5 text-slate-500">時間</span>
-                {session.startsAt && session.endsAt ? formatDateRange(session.startsAt, session.endsAt) : '尚未公布'}
+                {session.startsAt && session.endsAt
+                  ? `${formatTime(session.startsAt)} ~ ${formatTime(session.endsAt)}`
+                  : '尚未公布'}
               </p>
               <p className="flex items-center gap-1">
                 <MapPinIcon className="size-4 text-slate-500" />
