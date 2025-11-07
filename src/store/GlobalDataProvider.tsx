@@ -4,7 +4,7 @@ import { type ReactNode, createContext, useRef, useContext, useEffect } from 're
 import { useStore } from 'zustand'
 import useSWR from 'swr'
 import { fetcher } from '@/lib/utils'
-import { type GlobalDataState, createGlobalDataStore } from '@/store/gloabal-data-store'
+import { type GlobalDataState, createGlobalDataStore } from '@/store/gloabalDataStore'
 
 const SPEAKER_API_URL = 'https://sessionize.com/api/v2/qwnpmdyr/view/Speakers'
 const SESSION_API_URL = 'https://sessionize.com/api/v2/qwnpmdyr/view/Sessions'

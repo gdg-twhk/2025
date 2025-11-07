@@ -55,7 +55,10 @@ function SessionsContent() {
             // EXPLAIN: 一場議程可能有多位講者
             const sessionSpeakersId = new Set(session.speakers.map((speaker) => speaker.id))
             const speakersForSession = speakers.filter((speaker) => sessionSpeakersId.has(speaker.id))
-            const sessionTopic = session.categories[0].categoryItems[0].name as Topic
+            const sessionTopic =
+              session.categories[0].categoryItems.length > 0
+                ? (session.categories[0].categoryItems[0].name as Topic)
+                : ''
 
             return (
               <Dialog
@@ -74,14 +77,16 @@ function SessionsContent() {
                   <div
                     className={clsx(
                       'cursor-pointer rounded-lg border border-slate-500 p-3 transition-transform duration-300 hover:scale-[1.02]',
-                      topicClassnames[sessionTopic].card || 'bg-pastel-red'
+                      sessionTopic !== '' ? topicClassnames[sessionTopic].card : 'bg-pastel-red'
                     )}
                   >
                     <div className="flex items-center gap-2">
                       <Badge className="bg-slate-500 text-sm">
                         <MapPinIcon /> {session.room || '尚未公布'}
                       </Badge>
-                      <Badge className={`text-sm ${topicClassnames[sessionTopic].badge}`}>{sessionTopic}</Badge>
+                      {sessionTopic !== '' && (
+                        <Badge className={`text-sm ${topicClassnames[sessionTopic].badge}`}>{sessionTopic}</Badge>
+                      )}
                     </div>
                     <div className="pl-0.5">
                       <h3 className="mt-2 text-lg leading-tight font-bold md:text-xl">{session.title}</h3>

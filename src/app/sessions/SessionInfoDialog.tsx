@@ -13,12 +13,15 @@ interface SessionInfoDialogProps {
 }
 
 export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps) {
-  const sessionTopic = session.categories[0].categoryItems[0].name as Topic
+  const sessionTopic =
+    session.categories[0].categoryItems.length > 0 ? (session.categories[0].categoryItems[0].name as Topic) : ''
 
   return (
     <DialogContent className="h-3/4 max-h-3/4 overflow-y-auto px-4 md:px-5 lg:h-3/5 lg:max-h-3/5">
       <DialogHeader className="flex flex-col gap-2 p-0 text-left">
-        <Badge className={`text-sm ${topicClassnames[sessionTopic].badge}`}>{sessionTopic}</Badge>
+        {sessionTopic !== '' && (
+          <Badge className={`text-sm ${topicClassnames[sessionTopic].badge}`}>{sessionTopic}</Badge>
+        )}
         <DialogTitle className="text-2xl leading-tight font-bold lg:text-3xl">{session.title}</DialogTitle>
         <p className="flex items-center text-sm text-slate-500 md:text-base">
           <ClockIcon className="mr-1 inline-block size-4" />
