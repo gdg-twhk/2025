@@ -85,7 +85,7 @@ export default function HowTo() {
         </div>
       </section>
 
-      <section className="">
+      <section>
         <SectionTitle className="mt-10 lg:mt-5" color="red">
           注意事項
         </SectionTitle>
@@ -95,17 +95,6 @@ export default function HowTo() {
           <a className="text-sky-600" href="https://gdg.tw/code_of_conduct/" target="_blank">
             Google 社群行為守則。
           </a>
-        </p>
-
-        <p className="mt-6">【GDG 活動報到 黑名單機制公告】</p>
-        <p className="mt-2">
-          因應近期 GDG 活動數量增加，並確保所有活動報名者皆能順利參與活動，自 2025 年 3
-          月起，我們將正式實施出席紀錄機制，以維護其他參與者的權益。
-        </p>
-        <p className="mt-2">
-          自 2024 年 4
-          月起，若活動報名者曾報名活動但未到場，將被列入黑名單，並從後續活動的報名名冊中移除。如無法出席，請務必提前取消報名，可至
-          GDG 官方網站 的 My Ticket 頁面點擊 Un-RSVP 進行取消，以釋放名額給其他有意願參與的活動報名者。
         </p>
 
         <p className="mt-6">

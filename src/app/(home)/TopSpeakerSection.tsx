@@ -5,10 +5,6 @@ import { fetcher } from '@/lib/utils'
 import Image from 'next/image'
 import { SimpleSpeaker, Speaker } from '@/lib/types'
 
-// TODO: 等正式議程出來後再補 speaker dialog
-// import { Dialog, DialogTrigger } from '@/components/ui/dialog'
-// import { SpeakerDialogContent } from '@/components/SpeakerDialogContent'
-
 const topSpeakersId = [
   'b68f5688-528b-457e-bec1-01340ad3b68c',
   '744622fb-9b57-42b0-87ab-7b7254b39ea4',
@@ -55,7 +51,7 @@ export function TopSpeakerSection() {
           className="relative aspect-square w-full overflow-clip rounded-xl border border-gray-300 bg-gray-100 transition-transform duration-300 hover:scale-105"
         >
           <Image
-            className="size-full"
+            className="size-full bg-gray-50"
             src={speaker.profilePicture}
             alt={speaker.displayName}
             width={240}

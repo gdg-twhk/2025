@@ -101,7 +101,7 @@ function SessionsContent() {
                         {speakersForSession.map((speaker) => (
                           <div key={speaker.id} className="flex items-center gap-1.5">
                             <Image
-                              className="size-6 rounded-full md:size-8"
+                              className="size-6 rounded-full bg-gray-50 md:size-8"
                               src={speaker.profilePicture}
                               alt={speaker.questionAnswers?.[0]?.answer}
                               width={40}

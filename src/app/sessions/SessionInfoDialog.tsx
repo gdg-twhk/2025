@@ -46,7 +46,7 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
               href={`/speakers?name=${speaker.questionAnswers?.[0]?.answer}`}
             >
               <Image
-                className="size-8 rounded-full md:size-8"
+                className="size-8 rounded-full bg-gray-50 md:size-8"
                 src={speaker.profilePicture}
                 alt={speaker.questionAnswers?.[0]?.answer}
                 width={40}

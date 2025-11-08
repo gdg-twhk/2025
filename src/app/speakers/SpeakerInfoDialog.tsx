@@ -19,7 +19,7 @@ export function SpeakerInfoDialog({ speaker, sessions }: SpeakerInfoDialogProps)
     <DialogContent className="h-3/4 max-h-3/4 overflow-y-auto px-4 md:px-5 lg:h-3/5 lg:max-h-3/5">
       <DialogHeader className="flex h-fit flex-row gap-4 text-left">
         <Image
-          className="rounded-md object-cover"
+          className="rounded-md bg-gray-50 object-cover"
           src={speaker.profilePicture}
           alt={speaker.questionAnswers[0].answer}
           width={80}
