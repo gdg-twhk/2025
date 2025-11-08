@@ -17,7 +17,6 @@ interface Symbol {
   className?: string
 }
 
-// TODO: 把 img 改成 svg jsx，這樣重整才不會閃爍
 // 符號數據 - 包含不同的符號、位置、大小和速度
 const symbols: Symbol[] = [
   {
@@ -37,15 +36,6 @@ const symbols: Symbol[] = [
   { src: `${basePath}/assets/kv-symbols/7.svg`, x: 12, y: 20, width: 40, scrollSpeed: 0.5, offsetSpeed: -0.4 },
   { src: `${basePath}/assets/kv-symbols/8.svg`, x: 70, y: 30, width: 40, scrollSpeed: 1.2, offsetSpeed: -0.5 },
   { src: `${basePath}/assets/kv-symbols/9.svg`, x: 50, y: 80, width: 21, scrollSpeed: 0.8, offsetSpeed: -0.2 },
-  {
-    src: `${basePath}/assets/kv-symbols/10.svg`,
-    x: 25,
-    y: 30,
-    width: 17,
-    scrollSpeed: 0.1,
-    offsetSpeed: -0.9,
-    className: 'md:!left-[20%] md:!top-[35%]',
-  },
   { src: `${basePath}/assets/kv-symbols/11.svg`, x: 80, y: 60, width: 23, scrollSpeed: 1.4, offsetSpeed: -0.8 },
   {
     src: `${basePath}/assets/kv-symbols/12.svg`,
@@ -63,8 +53,10 @@ const symbols: Symbol[] = [
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [scrollY, setScrollY] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const symbolRefs = useRef<(HTMLImageElement | null)[]>([])
+  const scrollY = useRef(0)
+  const rafId = useRef<number | undefined>(undefined)
 
   // 監聽游標移動
   useEffect(() => {
@@ -85,31 +77,37 @@ export function Hero() {
     }
   }, [])
 
-  // 監聽頁面滾動
+  // 使用 RAF 優化滾動效能
   useEffect(() => {
-    function handleScroll() {
-      setScrollY(window.scrollY)
+    function updateSymbols() {
+      symbolRefs.current.forEach((element, index) => {
+        if (element) {
+          const symbol = symbols[index]
+          const mouseInfluenceX = (mousePosition.x - symbol.x) * symbol.offsetSpeed
+          const mouseInfluenceY = (mousePosition.y - symbol.y) * symbol.offsetSpeed
+          const scrollOffset = scrollY.current * symbol.scrollSpeed
+
+          element.style.transform = `translate(${mouseInfluenceX}px, ${mouseInfluenceY - scrollOffset}px)`
+        }
+      })
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    function handleScroll() {
+      scrollY.current = window.scrollY
 
-  // 計算符號的最終位置
-  const getSymbolTransform = useCallback(
-    (symbol: Symbol) => {
-      const mouseInfluenceX = (mousePosition.x - symbol.x) * symbol.offsetSpeed
-      const mouseInfluenceY = (mousePosition.y - symbol.y) * symbol.offsetSpeed
+      if (rafId.current) cancelAnimationFrame(rafId.current)
 
-      const scrollOffset = scrollY * symbol.scrollSpeed
+      rafId.current = requestAnimationFrame(updateSymbols)
+    }
 
-      return {
-        transform: `translate(${mouseInfluenceX}px, ${mouseInfluenceY - scrollOffset}px)`,
-        transition: 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-      }
-    },
-    [mousePosition.x, mousePosition.y, scrollY]
-  )
+    updateSymbols() // 初始更新
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafId.current) cancelAnimationFrame(rafId.current)
+    }
+  }, [mousePosition.x, mousePosition.y])
 
   return (
     <section ref={containerRef} className="relative h-screen w-full overflow-x-clip">
@@ -127,13 +125,16 @@ export function Hero() {
       {symbols.map((symbol, index) => (
         <img
           key={index}
+          ref={(el) => {
+            symbolRefs.current[index] = el
+          }}
           className={clsx('absolute will-change-transform', symbol.className)}
           src={symbol.src}
           style={{
             left: `${symbol.x}%`,
             top: `${symbol.y}%`,
             width: `${symbol.width}px`,
-            ...getSymbolTransform(symbol),
+            transition: 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           }}
         />
       ))}

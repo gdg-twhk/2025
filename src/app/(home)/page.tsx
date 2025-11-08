@@ -57,32 +57,33 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Marquee className="mb-5 [--duration:24s]">
-        {marqueeFirstRow.map((src, index) => (
-          <Image
-            key={index}
-            className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
-            src={src}
-            alt={`DevFest 2024 photo ${index + 1}`}
-            width={256}
-            height={160}
-          />
-        ))}
-      </Marquee>
-      <Marquee className="mb-16 [--duration:24s]" reverse>
-        {marqueeSecondRow.map((src, index) => (
-          <Image
-            key={index}
-            className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
-            src={src}
-            alt={`DevFest 2024 photo ${index + 1}`}
-            width={256}
-            height={160}
-          />
-        ))}
-      </Marquee>
-
-      <div className="content-container space-y-24 pb-20">
+      <div className="content-container space-y-24 pb-20 md:space-y-40">
+        <section>
+          <Marquee className="mb-5 [--duration:60s]">
+            {marqueeFirstRow.map((src, index) => (
+              <Image
+                key={index}
+                className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
+                src={src}
+                alt={`DevFest 2024 photo ${index + 1}`}
+                width={256}
+                height={160}
+              />
+            ))}
+          </Marquee>
+          <Marquee className="[--duration:60s]" reverse>
+            {marqueeSecondRow.map((src, index) => (
+              <Image
+                key={index}
+                className="aspect-video h-40 rounded-lg border bg-gray-50 object-cover"
+                src={src}
+                alt={`DevFest 2024 photo ${index + 1}`}
+                width={256}
+                height={160}
+              />
+            ))}
+          </Marquee>
+        </section>
         <section className="mx-auto max-w-4xl text-lg">
           <SectionTitle id="social-partners" color="green">
             活動介紹
@@ -155,16 +156,6 @@ export default function Home() {
             </Link>
           </div>
         </section>
-
-        {/* TODO: 等待正式資料 */}
-        {/* <section>
-          <SectionTitle id="sponsors" color="green">
-            贊助夥伴
-          </SectionTitle>
-          <div className="flex w-full flex-col flex-wrap items-center justify-center gap-5 sm:flex-row md:gap-8">
-
-          </div>
-        </section> */}
 
         <section>
           <SectionTitle id="social-partners" color="blue">

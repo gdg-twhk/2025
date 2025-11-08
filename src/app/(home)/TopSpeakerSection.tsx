@@ -77,7 +77,6 @@ export function TopSpeakerSection() {
           </p>
         </div>
       ))}
-      <div className="flex aspect-square w-full items-center justify-center text-3xl font-bold">......還有更多！</div>
     </ul>
   )
 }
