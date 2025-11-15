@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { clsx } from 'clsx'
+import { Icon } from '@iconify/react'
 import { SectionTitle } from '@/components/SectionTitle'
 import { Marquee } from '@/components/ui/marquee'
-import { Hero } from './Hero'
 import { Button } from '@/components/Button'
 import { MagicCard } from '@/components/ui/magic-card'
-import { Icon } from '@iconify/react'
-import { clsx } from 'clsx'
-import { TopSpeakerSection } from './TopSpeakerSection'
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { basePath } from '@/lib/constants'
+import { Hero } from './Hero'
+import { TopSpeakerSection } from './TopSpeakerSection'
+import partnersData from './partnersData'
 
 const marqueePhotosList = [
   `${basePath}/assets/devfest-2024/1.jpg`,
@@ -57,7 +59,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <div className="content-container space-y-24 pb-20 md:space-y-40">
+      <div className="content-container space-y-24 pb-20 md:space-y-40 md:pb-40">
         <section>
           <Marquee className="mb-5 [--duration:60s]">
             {marqueeFirstRow.map((src, index) => (
@@ -157,19 +159,51 @@ export default function Home() {
           </div>
         </section>
 
-        <section>
-          <SectionTitle id="social-partners" color="blue">
-            社群夥伴
-          </SectionTitle>
-          <div className="flex w-full flex-col flex-wrap items-center justify-center gap-5 sm:flex-row md:gap-8">
-            <img
-              className="w-full max-w-72"
-              src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.png"
-              alt="JetBrains logo"
-              loading="lazy"
-            ></img>
-          </div>
-        </section>
+        {partnersData.map((section) => (
+          <section key={section.sectionId}>
+            <SectionTitle id={section.sectionId} color={section.titleColor}>
+              {section.title}
+            </SectionTitle>
+            <div className="flex w-full flex-col flex-wrap items-center justify-center gap-8 sm:flex-row md:gap-10">
+              {section.brands.map((brand) => (
+                <Dialog key={brand.name}>
+                  <DialogTrigger>
+                    <Image
+                      className="w-full"
+                      style={{ maxWidth: `${brand.maxWidth}px` }}
+                      src={brand.imageSrc}
+                      alt={brand.name}
+                      loading="lazy"
+                      width={288}
+                      height={60}
+                    />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle className="sr-only">
+                      {section.title} - {brand.name}
+                    </DialogTitle>
+                    <Image
+                      className="w-full"
+                      style={{ maxWidth: `${brand.maxWidth}px` }}
+                      src={brand.imageSrc}
+                      alt={brand.name}
+                      loading="lazy"
+                      width={288}
+                      height={60}
+                    />
+                    <p className="mt-2 mb-3 whitespace-pre-wrap">{brand.description}</p>
+                    <div className="flex justify-end pr-1 text-lg">
+                      <a className="text-slate-700 underline underline-offset-2" href={brand.url} target="_blank">
+                        品牌連結
+                        <Icon icon="tabler:external-link" className="-mt-0.5 ml-1 inline size-5" />
+                      </a>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </main>
   )

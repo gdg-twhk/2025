@@ -6,6 +6,7 @@ import { DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog
 import { Speaker, Session } from '@/lib/types'
 import { formatTime } from '@/lib/utils'
 
+
 interface SpeakerInfoDialogProps {
   speaker: Speaker
   sessions: Session[]

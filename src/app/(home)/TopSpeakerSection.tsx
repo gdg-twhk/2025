@@ -41,8 +41,6 @@ export function TopSpeakerSection() {
         }))
     : []
 
-  console.log(data)
-
   return (
     <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
       {topSpeakers.map((speaker, index) => (
