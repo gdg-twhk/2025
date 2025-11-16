@@ -85,7 +85,7 @@ const data: PartnerSection[] = [
   },
   {
     sectionId: 'community-booth',
-    title: '社群攤位',
+    title: '技術社群',
     titleColor: 'green',
     brands: [
       {
