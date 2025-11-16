@@ -56,9 +56,16 @@ function SessionsContent() {
             const sessionSpeakersId = new Set(session.speakers.map((speaker) => speaker.id))
             const speakersForSession = speakers.filter((speaker) => sessionSpeakersId.has(speaker.id))
             const sessionTopic =
-              session.categories[0].categoryItems.length > 0
-                ? (session.categories[0].categoryItems[0].name as Topic)
+              session.categories[1].categoryItems.length > 0
+                ? (session.categories[1].categoryItems[0].name as Topic)
                 : ''
+            const sessionTags = session.categories[0].categoryItems.filter((tag) => {
+              if (tag.name === sessionTopic) return false
+              if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
+              if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
+              if (sessionTopic === 'Go' && tag.name === 'Golang') return false
+              return true
+            })
 
             return (
               <Dialog
@@ -80,22 +87,27 @@ function SessionsContent() {
                       sessionTopic !== '' ? topicClassnames[sessionTopic].card : 'bg-pastel-red'
                     )}
                   >
-                    <div className="flex items-center gap-2">
-                      <Badge className="bg-slate-500 text-sm">
-                        <MapPinIcon /> {session.room || '尚未公布'}
-                      </Badge>
+                    <div className="flex gap-2">
                       {sessionTopic !== '' && (
                         <Badge className={`text-sm ${topicClassnames[sessionTopic].badge}`}>{sessionTopic}</Badge>
                       )}
+                      {sessionTags.map((tag) => (
+                        <Badge key={tag.id} className="bg-slate-400 text-sm">
+                          {tag.name}
+                        </Badge>
+                      ))}
                     </div>
                     <div className="pl-0.5">
                       <h3 className="mt-2 text-lg leading-tight font-bold md:text-xl">{session.title}</h3>
-                      <p className="mt-1 flex items-center text-sm text-slate-600">
-                        <ClockIcon className="mr-1 inline-block size-4" />
+                      <p className="mt-1 flex items-center gap-1 text-sm font-medium text-slate-600">
+                        <MapPinIcon className="mt-px size-4" />
+                        {session.room || '尚未公布'}
+                        <ClockIcon className="mt-px ml-2 size-4" />
                         {session.startsAt && session.endsAt
                           ? `${formatTime(session.startsAt)} ~ ${formatTime(session.endsAt)}`
                           : '尚未公布'}
                       </p>
+                      <p className="mt-1 flex items-center text-sm text-slate-600"></p>
                       <p className="mt-1.5 line-clamp-3 text-xs md:text-sm lg:line-clamp-2">{session.description}</p>
                       <div className="mt-2 flex gap-2 pl-0.5">
                         {speakersForSession.map((speaker) => (
