@@ -22,8 +22,8 @@ const membersData: Record<Team, Member[]> = {
       color: 'red',
     },
     {
-      name: 'Issac',
-      imgSrc: `${basePath}/assets/members/Issac.jpg`,
+      name: 'Isaac',
+      imgSrc: `${basePath}/assets/members/Isaac.jpg`,
       color: 'red',
     },
   ],
@@ -65,8 +65,8 @@ const membersData: Record<Team, Member[]> = {
 
   場務組: [
     {
-      name: 'Issac',
-      imgSrc: `${basePath}/assets/members/Issac.jpg`,
+      name: 'Isaac',
+      imgSrc: `${basePath}/assets/members/Isaac.jpg`,
       color: 'red',
     },
     {
