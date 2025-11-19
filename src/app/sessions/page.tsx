@@ -7,6 +7,7 @@ import { ButtonGroup, ButtonGroupText } from '@/components/ui/button-group'
 import { ListView } from './ListView'
 import { CalendarView } from './CalendarView'
 import { Button } from '@/components/ui/button'
+import { clsx } from 'clsx'
 
 export default function SessionsPage() {
   return (
@@ -43,7 +44,12 @@ function SessionsContent() {
   }
 
   return (
-    <main className="lg:pt-menu-height min-h-dvh flex flex-col justify-center">
+    <main
+      className={clsx(
+        'lg:pt-menu-height flex flex-col justify-center pb-5',
+        viewMode === 'calendar' ? 'h-dvh' : 'min-h-dvh'
+      )}
+    >
       <SectionTitle className="mt-10 lg:mt-5" color="yellow">
         議程表
       </SectionTitle>
@@ -52,7 +58,7 @@ function SessionsContent() {
         <p className="mt-20 text-center text-xl">議程資料載入中......</p>
       ) : (
         <>
-          <div className="mx-auto max-w-2xl px-5">
+          <div className="mx-auto w-full max-w-2xl px-5">
             <ButtonGroup className="mx-auto mb-5">
               <Button
                 className={viewMode === 'calendar' ? 'text-core-blue hover:text-core-blue' : ''}
