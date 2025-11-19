@@ -8,6 +8,7 @@ import { type GlobalDataState, createGlobalDataStore } from '@/store/gloabalData
 
 const SPEAKER_API_URL = 'https://sessionize.com/api/v2/qwnpmdyr/view/Speakers'
 const SESSION_API_URL = 'https://sessionize.com/api/v2/qwnpmdyr/view/Sessions'
+const SCHEDULE_API_URL = 'https://sessionize.com/api/v2/qwnpmdyr/view/GridSmart'
 
 export type GlobalDataStoreApi = ReturnType<typeof createGlobalDataStore>
 
@@ -23,21 +24,21 @@ export const GlobalDataStoreProvider = ({ children }: GlobalDataStoreProviderPro
     storeRef.current = createGlobalDataStore()
   }
 
-  const { data: speakerData, error: speakerError, isLoading: isSpeakersLoading } = useSWR(SPEAKER_API_URL, fetcher)
-  const { data: sessionData, error: sessionError, isLoading: isSessionsLoading } = useSWR(SESSION_API_URL, fetcher)
+  const { data: speakerData } = useSWR(SPEAKER_API_URL, fetcher)
+  const { data: sessionData } = useSWR(SESSION_API_URL, fetcher)
+  const { data: scheduleData } = useSWR(SCHEDULE_API_URL, fetcher)
 
-  // 初始化時自動更新 store
   useEffect(() => {
-    if (speakerData) {
-      storeRef.current?.setState({ speakers: speakerData })
-    }
+    if (speakerData) storeRef.current?.setState({ speakers: speakerData })
   }, [speakerData])
 
   useEffect(() => {
-    if (sessionData) {
-      storeRef.current?.setState({ sessions: sessionData[0].sessions })
-    }
+    if (sessionData) storeRef.current?.setState({ sessions: sessionData[0].sessions })
   }, [sessionData])
+
+  useEffect(() => {
+    if (scheduleData) storeRef.current?.setState({ schedules: scheduleData[0].rooms })
+  }, [scheduleData])
 
   return <GlobalDataStoreContext.Provider value={storeRef.current}>{children}</GlobalDataStoreContext.Provider>
 }

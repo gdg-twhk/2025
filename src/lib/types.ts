@@ -67,3 +67,9 @@ export interface Session {
     }[]
   }[]
 }
+
+export interface ScheduleByRoom {
+  id: string
+  name: string
+  sessions: Session[]
+}

@@ -1,17 +1,13 @@
 'use client'
 import { useEffect, useState, Suspense } from 'react'
-import Image from 'next/image'
-import clsx from 'clsx'
-import { MapPinIcon, ClockIcon } from 'lucide-react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useGlobalDataStore } from '@/store/GlobalDataProvider'
-import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { SectionTitle } from '@/components/SectionTitle'
-import { Topic } from '@/lib/types'
-import { Badge } from '@/components/ui/badge'
-import { formatTime } from '@/lib/utils'
-import { SessionInfoDialog } from './SessionInfoDialog'
-import { topicClassnames } from '@/lib/constants'
+import { ButtonGroup, ButtonGroupText } from '@/components/ui/button-group'
+import { ListView } from './ListView'
+import { CalendarView } from './CalendarView'
+import { Button } from '@/components/ui/button'
+import { clsx } from 'clsx'
 
 export default function SessionsPage() {
   return (
@@ -22,10 +18,11 @@ export default function SessionsPage() {
 }
 
 function SessionsContent() {
-  const { speakers, sessions } = useGlobalDataStore((state) => state)
+  const { speakers, sessions, schedules } = useGlobalDataStore((state) => state)
   const searchParams = useSearchParams()
   const router = useRouter()
   const [openSessionId, setOpenSessionId] = useState<string | null>(null)
+  const [viewMode, setViewMode] = useState<'list' | 'calendar'>('calendar')
 
   // 當搜尋參數 id 變動時，自動打開對應 Dialog
   useEffect(() => {
@@ -33,8 +30,13 @@ function SessionsContent() {
     setOpenSessionId(sessionId)
   }, [searchParams])
 
+  function handleOpenModal(sessionId: string) {
+    router.replace(`?id=${sessionId}`, { scroll: false })
+    setOpenSessionId(sessionId)
+  }
+
   // 關閉 Dialog 時清除搜尋參數 id
-  const handleClose = () => {
+  function handleCloseModal() {
     const params = new URLSearchParams(searchParams.toString())
     params.delete('id')
     router.replace(`?${params.toString()}`, { scroll: false })
@@ -42,7 +44,12 @@ function SessionsContent() {
   }
 
   return (
-    <main className="lg:pt-menu-height min-h-dvh justify-center pb-20">
+    <main
+      className={clsx(
+        'lg:pt-menu-height flex flex-col justify-center pb-5',
+        viewMode === 'calendar' ? 'h-dvh' : 'min-h-dvh'
+      )}
+    >
       <SectionTitle className="mt-10 lg:mt-5" color="yellow">
         議程表
       </SectionTitle>
@@ -50,88 +57,43 @@ function SessionsContent() {
       {speakers.length === 0 ? (
         <p className="mt-20 text-center text-xl">議程資料載入中......</p>
       ) : (
-        <ul className="mx-auto flex max-w-2xl flex-col gap-4 px-5 lg:gap-6">
-          {sessions.map((session) => {
-            // EXPLAIN: 一場議程可能有多位講者
-            const sessionSpeakersId = new Set(session.speakers.map((speaker) => speaker.id))
-            const speakersForSession = speakers.filter((speaker) => sessionSpeakersId.has(speaker.id))
-            const sessionTopic =
-              session.categories[1].categoryItems.length > 0
-                ? (session.categories[1].categoryItems[0].name as Topic)
-                : ''
-            const sessionTags = session.categories[0].categoryItems.filter((tag) => {
-              if (tag.name === sessionTopic) return false
-              if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
-              if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
-              if (sessionTopic === 'Go' && tag.name === 'Golang') return false
-              return true
-            })
-
-            return (
-              <Dialog
-                key={session.id}
-                open={openSessionId === session.id}
-                onOpenChange={(open) => {
-                  if (open) {
-                    router.replace(`?id=${session.id}`, { scroll: false })
-                    setOpenSessionId(session.id)
-                  } else {
-                    handleClose()
-                  }
-                }}
+        <>
+          <div className="mx-auto w-full max-w-2xl px-5">
+            <ButtonGroup className="mx-auto mb-5">
+              <Button
+                className={viewMode === 'calendar' ? 'text-core-blue hover:text-core-blue' : ''}
+                variant="outline"
+                onClick={() => setViewMode('calendar')}
               >
-                <DialogTrigger asChild>
-                  <div
-                    className={clsx(
-                      'cursor-pointer rounded-lg border border-slate-500 p-3 transition-transform duration-300 hover:scale-[1.02]',
-                      sessionTopic !== '' ? topicClassnames[sessionTopic].card : 'bg-pastel-red'
-                    )}
-                  >
-                    <div className="flex gap-2">
-                      {sessionTopic !== '' && (
-                        <Badge className={`text-sm ${topicClassnames[sessionTopic].badge}`}>{sessionTopic}</Badge>
-                      )}
-                      {sessionTags.map((tag) => (
-                        <Badge key={tag.id} className="bg-slate-400 text-sm">
-                          {tag.name}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="pl-0.5">
-                      <h3 className="mt-2 text-lg leading-tight font-bold md:text-xl">{session.title}</h3>
-                      <p className="mt-1 flex items-center gap-1 text-sm font-medium text-slate-600">
-                        <MapPinIcon className="mt-px size-4" />
-                        {session.room || '尚未公布'}
-                        <ClockIcon className="mt-px ml-2 size-4" />
-                        {session.startsAt && session.endsAt
-                          ? `${formatTime(session.startsAt)} ~ ${formatTime(session.endsAt)}`
-                          : '尚未公布'}
-                      </p>
-                      <p className="mt-1 flex items-center text-sm text-slate-600"></p>
-                      <p className="mt-1.5 line-clamp-3 text-xs md:text-sm lg:line-clamp-2">{session.description}</p>
-                      <div className="mt-2 flex gap-2 pl-0.5">
-                        {speakersForSession.map((speaker) => (
-                          <div key={speaker.id} className="flex items-center gap-1.5">
-                            <Image
-                              className="size-6 rounded-full bg-gray-50 md:size-8"
-                              src={speaker.profilePicture}
-                              alt={speaker.questionAnswers?.[0]?.answer}
-                              width={40}
-                              height={40}
-                            />
-                            <p className="text-base font-medium md:text-lg">{speaker.questionAnswers?.[0]?.answer}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </DialogTrigger>
-
-                <SessionInfoDialog session={session} speakers={speakersForSession} />
-              </Dialog>
-            )
-          })}
-        </ul>
+                行事曆
+              </Button>
+              <Button
+                className={viewMode === 'list' ? 'text-core-blue hover:text-core-blue' : ''}
+                variant="outline"
+                onClick={() => setViewMode('list')}
+              >
+                列表
+              </Button>
+            </ButtonGroup>
+            <ListView
+              show={viewMode === 'list'}
+              sessions={sessions}
+              speakers={speakers}
+              openSessionId={openSessionId}
+              handleOpenModal={handleOpenModal}
+              handleCloseModal={handleCloseModal}
+            />
+          </div>
+          <CalendarView
+            show={viewMode === 'calendar'}
+            sessions={sessions}
+            schedules={schedules}
+            speakers={speakers}
+            openSessionId={openSessionId}
+            handleOpenModal={handleOpenModal}
+            handleCloseModal={handleCloseModal}
+          />
+        </>
       )}
     </main>
   )
