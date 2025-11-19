@@ -75,12 +75,30 @@ const data: PartnerSection[] = [
         url: 'https://jetbrains.com/',
         maxWidth: 250,
       },
-      // {
-      //   name: '天瓏書局',
-      //   description: '',
-      //   imageSrc: '',
-      //   url: '',
-      // },
+      {
+        name: '天瓏書局',
+        description:
+          '想學程式、想升級電腦技能，就來天瓏書局！天瓏是全台最齊全的電腦書專賣店，提供專業電腦中文書、英文書、簡體書、電子開發板等多元選擇，讓您輕鬆找到所需的書籍。\n天瓏網路專賣店提供24小時不打烊的購書服務，讓您隨時隨地都能輕鬆購書。此外，天瓏還提供滿$350免運費的優惠，讓您購書更划算。',
+        imageSrc: `${basePath}/assets/brands/天瓏.jpeg`,
+        url: 'https://www.tenlong.com.tw/',
+        maxWidth: 80,
+      },
+      {
+        name: 'iPASS一卡通',
+        description:
+          'iPASS一卡通的支付服務包含一卡通儲值卡及iPASS MONEY電子支付。iPASS MONEY用戶數破710萬，用戶數全台第一，涵蓋全台交通、消費支付、生活繳費及社群轉帳四大場域，是民眾生活中超便利的支付好幫手。',
+        imageSrc: `${basePath}/assets/brands/iPASS.png`,
+        url: 'https://www.i-pass.com.tw/',
+        maxWidth: 250,
+      },
+      {
+        name: '財團法人開放文化基金會',
+        description:
+          '開放文化基金會（Open Culture Foundation，簡稱 OCF）是一個非營利性的組織。自 2014 年創立以來，我們以法人做為組織形式，支持臺灣 40 多個開放科技社群，透過推廣開放科技和跨界合作，在臺灣持續的銜繫科技社群與其他公／私領域，來促成開放共創、保障數位人權、支持透明涵融的數位公民社會。',
+        imageSrc: `${basePath}/assets/brands/ocf.png`,
+        url: 'https://ocf.tw/',
+        maxWidth: 250,
+      },
     ],
   },
   {

@@ -8,9 +8,9 @@ import { Button } from '@/components/Button'
 import { MagicCard } from '@/components/ui/magic-card'
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { basePath } from '@/lib/constants'
+import partnersData from '@/lib/partnersData'
 import { Hero } from './Hero'
 import { TopSpeakerSection } from './TopSpeakerSection'
-import partnersData from './partnersData'
 
 const marqueePhotosList = [
   `${basePath}/assets/devfest-2024/1.jpg`,
