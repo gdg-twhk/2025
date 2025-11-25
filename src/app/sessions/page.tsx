@@ -46,11 +46,11 @@ function SessionsContent() {
   return (
     <main
       className={clsx(
-        'lg:pt-menu-height flex flex-col justify-center pb-5',
+        'lg:pt-menu-height flex flex-col justify-center pb-3 lg:pb-5',
         viewMode === 'calendar' ? 'h-dvh' : 'min-h-dvh'
       )}
     >
-      <SectionTitle className="mt-10 lg:mt-5" color="yellow">
+      <SectionTitle className="mt-10 mb-3! lg:mt-5 lg:mb-6!" color="yellow">
         議程表
       </SectionTitle>
 
@@ -59,7 +59,7 @@ function SessionsContent() {
       ) : (
         <>
           <div className="mx-auto w-full max-w-2xl px-5">
-            <ButtonGroup className="mx-auto mb-5">
+            <ButtonGroup className="mx-auto mb-3 lg:mb-5">
               <Button
                 className={viewMode === 'calendar' ? 'text-core-blue hover:text-core-blue' : ''}
                 variant="outline"
@@ -86,7 +86,6 @@ function SessionsContent() {
           </div>
           <CalendarView
             show={viewMode === 'calendar'}
-            sessions={sessions}
             schedules={schedules}
             speakers={speakers}
             openSessionId={openSessionId}

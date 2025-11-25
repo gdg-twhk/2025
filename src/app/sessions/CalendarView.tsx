@@ -9,7 +9,6 @@ import { ScheduleByRoom, Session, Speaker, Topic } from '@/lib/types'
 import { SessionInfoDialog } from './SessionInfoDialog'
 
 interface CalendarViewProps {
-  sessions: Session[]
   schedules: ScheduleByRoom[]
   speakers: Speaker[]
   openSessionId: string | null
@@ -18,12 +17,10 @@ interface CalendarViewProps {
   show: boolean
 }
 
-const CALENDAR_TOP_OFFSET_LG = '208'
-const MINUTE_HEIGHT_PX = 4
-const TOTAL_DAY_MINUTES = (17 - 8.5) * 60 // 8:30 AM to 5:00 PM
+const MINUTE_HEIGHT_PX = 8
+const TOTAL_DAY_MINUTES = (18 - 8.5) * 60 // 8:30 AM to 6:00 PM
 
 export function CalendarView({
-  sessions,
   schedules,
   speakers,
   openSessionId,
@@ -46,7 +43,7 @@ export function CalendarView({
   return (
     <section
       className={clsx(
-        'relative mx-auto flex w-[calc(100%-40px)] flex-1 overflow-auto rounded-2xl border border-gray-400 bg-gray-50',
+        'relative mx-auto flex w-[calc(100%-24px)] flex-1 overflow-x-auto overscroll-none rounded-2xl border border-gray-400 bg-gray-50 lg:w-[calc(100%-40px)]',
         !show && 'hidden'
       )}
     >
@@ -102,8 +99,8 @@ export function CalendarView({
               const speakersForSession = speakers.filter((speaker) => sessionSpeakersId.has(speaker.id))
               const hasTopicOrTags = session.categories.length > 0
               const sessionTopic =
-                hasTopicOrTags && session.categories[1].categoryItems.length > 0
-                  ? (session.categories[1].categoryItems[0].name as Topic)
+                hasTopicOrTags && session.categories[2].categoryItems.length > 0
+                  ? (session.categories[2].categoryItems[0].name as Topic)
                   : ''
 
               return (
