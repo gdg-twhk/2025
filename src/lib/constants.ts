@@ -6,6 +6,7 @@ export const BEVY_RSVP_URL =
   'https://gdg.community.dev/events/details/google-gdg-taipei-presents-devfest-taipei-2025/cohost-gdg-cloud-taipei'
 
 export const socialLinks = [
+  { name: 'Discord', href: 'https://discord.gg/EfBRZk6Ejz', icon: 'lineicons:discord', size: 28 },
   { name: 'Facebook', href: 'https://facebook.com/gdg.taipei', icon: 'lineicons:facebook', size: 28 },
   { name: 'Instagram', href: 'https://www.instagram.com/gdg.taipei', icon: 'ri:instagram-fill', size: 26 },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/480844', icon: 'lineicons:linkedin', size: 28 },

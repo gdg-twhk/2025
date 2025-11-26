@@ -31,17 +31,18 @@ export function ListView({
         // EXPLAIN: 一場議程可能有多位講者
         const sessionSpeakersId = new Set(session.speakers.map((speaker) => speaker.id))
         const speakersForSession = speakers.filter((speaker) => sessionSpeakersId.has(speaker.id))
+        const topicCategory = session.categories.find((cat) => cat.name === 'Topic')
         const sessionTopic =
-          session.categories.find((cat) => cat.name === 'Topic')?.categoryItems.length! > 0
-            ? (session.categories.find((cat) => cat.name === 'Topic')?.categoryItems[0].name as Topic)
+          topicCategory?.categoryItems && topicCategory.categoryItems.length > 0
+            ? (topicCategory.categoryItems[0].name as Topic)
             : ''
-        const sessionTags = session.categories.find((cat) => cat.name === 'Tags')!.categoryItems.filter((tag) => {
+        const sessionTags = session.categories.find((cat) => cat.name === 'Tags')?.categoryItems.filter((tag) => {
           if (tag.name === sessionTopic) return false
           if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
           if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
           if (sessionTopic === 'Go' && tag.name === 'Golang') return false
           return true
-        })
+        }) || []
 
         return (
           <Dialog
