@@ -46,11 +46,11 @@ function SessionsContent() {
   return (
     <main
       className={clsx(
-        'lg:pt-menu-height flex flex-col justify-center pb-3 lg:pb-5',
+        'lg:pt-menu-height relative flex flex-col justify-center pb-3 lg:pb-5',
         viewMode === 'calendar' ? 'h-dvh' : 'min-h-dvh'
       )}
     >
-      <SectionTitle className="mt-10 mb-3! lg:mt-5 lg:mb-6!" color="yellow">
+      <SectionTitle className="mt-10 lg:mt-5 lg:pb-8!" color="yellow">
         議程表
       </SectionTitle>
 
@@ -58,17 +58,17 @@ function SessionsContent() {
         <p className="mt-20 text-center text-xl">議程資料載入中......</p>
       ) : (
         <>
-          <div className="mx-auto w-full max-w-2xl px-5">
-            <ButtonGroup className="mx-auto mb-3 lg:mb-5">
+          <div className="mx-auto w-full max-w-2xl px-3">
+            <ButtonGroup className="absolute top-10 left-3 lg:top-[132px] lg:left-1/2 lg:-translate-x-1/2">
               <Button
-                className={viewMode === 'calendar' ? 'text-core-blue hover:text-core-blue' : ''}
+                className={clsx('px-2! py-1!', viewMode === 'calendar' ? 'text-core-blue hover:text-core-blue' : '')}
                 variant="outline"
                 onClick={() => setViewMode('calendar')}
               >
                 行事曆
               </Button>
               <Button
-                className={viewMode === 'list' ? 'text-core-blue hover:text-core-blue' : ''}
+                className={clsx('px-2! py-1!', viewMode === 'list' ? 'text-core-blue hover:text-core-blue' : '')}
                 variant="outline"
                 onClick={() => setViewMode('list')}
               >

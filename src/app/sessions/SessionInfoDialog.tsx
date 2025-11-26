@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ClockIcon, MapPinIcon, LanguagesIcon } from 'lucide-react'
+import { ClockIcon, MapPinIcon, LanguagesIcon, MessageCircleQuestionMarkIcon, PencilLineIcon } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Speaker, Session, Topic } from '@/lib/types'
 import { formatTime } from '@/lib/utils'
 import { topicClassnames } from '@/lib/constants'
+import sessionExtraData from '@/lib/sessionExtraData'
 
 interface SessionInfoDialogProps {
   session: Session
@@ -18,15 +19,16 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
     topicCategory?.categoryItems && topicCategory.categoryItems.length > 0
       ? (topicCategory.categoryItems[0].name as Topic)
       : ''
-  const sessionTags = session.categories
-    .find((cat) => cat.name === 'Tags')
-    ?.categoryItems?.filter((tag) => {
-      if (tag.name === sessionTopic) return false
-      if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
-      if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
-      if (sessionTopic === 'Go' && tag.name === 'Golang') return false
-      return true
-    }) || []
+  const sessionTags =
+    session.categories
+      .find((cat) => cat.name === 'Tags')
+      ?.categoryItems?.filter((tag) => {
+        if (tag.name === sessionTopic) return false
+        if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
+        if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
+        if (sessionTopic === 'Go' && tag.name === 'Golang') return false
+        return true
+      }) || []
   const language = session.categories.find((cat) => cat.name === 'Language')?.categoryItems[0].name
 
   return (
@@ -43,23 +45,8 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
           ))}
         </div>
         <DialogTitle className="text-2xl leading-tight font-bold lg:text-3xl">{session.title}</DialogTitle>
-        <p className="flex items-center text-sm font-medium text-slate-500 md:text-base">
-          <MapPinIcon className="mt-px mr-2 size-4" />
-          {session.room || '尚未公布'}
-        </p>
-        <p className="flex items-center text-sm font-medium text-slate-500 md:text-base">
-          <ClockIcon className="mt-px mr-2 size-4" />
-          {session.startsAt && session.endsAt
-            ? `${formatTime(session.startsAt)} ~ ${formatTime(session.endsAt)}`
-            : '尚未公布'}
-        </p>
-        {language && (
-          <p className="flex items-center text-sm font-medium text-slate-500 md:text-base">
-            <LanguagesIcon className="mt-px mr-2 size-4" />
-            {language}
-          </p>
-        )}
-        <div className="mt-2 flex gap-3 pl-0.5">
+
+        <div className="flex gap-3">
           {speakers.map((speaker) => (
             <Link
               key={speaker.id}
@@ -67,7 +54,7 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
               href={`/speakers?name=${speaker.questionAnswers?.[0]?.answer}`}
             >
               <Image
-                className="size-8 rounded-full bg-gray-50 md:size-8"
+                className="border-border size-8 rounded-full border bg-gray-50 md:size-8"
                 src={speaker.profilePicture}
                 alt={speaker.questionAnswers?.[0]?.answer}
                 width={40}
@@ -77,6 +64,55 @@ export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps)
             </Link>
           ))}
         </div>
+
+        <section className="flex text-sm font-medium text-slate-500 [&_span]:text-slate-600">
+          <div className="flex-1 space-y-2">
+            <p className="flex items-center md:text-base">
+              <MapPinIcon className="mt-px mr-2 size-4" />
+              <span>{session.room || '尚未公布'}</span>
+            </p>
+            <p className="flex items-center md:text-base">
+              <ClockIcon className="mt-px mr-2 size-4" />
+              <span>
+                {session.startsAt && session.endsAt
+                  ? `${formatTime(session.startsAt)} ~ ${formatTime(session.endsAt)}`
+                  : '尚未公布'}
+              </span>
+            </p>
+            {language && (
+              <p className="flex items-center md:text-base">
+                <LanguagesIcon className="mt-px mr-2 size-4" />
+                <span>{language}</span>
+              </p>
+            )}
+          </div>
+          <div className="flex-1 space-y-2">
+            {session.id in sessionExtraData && (
+              <>
+                <p className="flex items-center md:text-base">
+                  <MessageCircleQuestionMarkIcon className="mt-px mr-2 size-4" />
+                  <a
+                    className="underline underline-offset-2 hover:text-blue-400"
+                    href={sessionExtraData[session.id].slido}
+                    target="_blank"
+                  >
+                    Sildo 連結
+                  </a>
+                </p>
+                <p className="flex items-center md:text-base">
+                  <PencilLineIcon className="mt-px mr-2 size-4" />
+                  <a
+                    className="underline underline-offset-2 hover:text-blue-400"
+                    href={sessionExtraData[session.id].hackmd}
+                    target="_blank"
+                  >
+                    HackMD 共筆連結
+                  </a>
+                </p>
+              </>
+            )}
+          </div>
+        </section>
       </DialogHeader>
 
       <hr className="my-3 md:my-5" />

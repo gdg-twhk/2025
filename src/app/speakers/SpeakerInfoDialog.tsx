@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ClockIcon, MapPinIcon, ExternalLinkIcon } from 'lucide-react'
+import { ClockIcon, MapPinIcon, Link2Icon } from 'lucide-react'
 import { DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Speaker, Session } from '@/lib/types'
 import { formatTime } from '@/lib/utils'
@@ -39,30 +39,23 @@ export function SpeakerInfoDialog({ speaker, sessions }: SpeakerInfoDialogProps)
         <div className="h-px w-full bg-zinc-300" />
       </div>
 
-      <div className="mt-3">
+      <div className="mt-3 space-y-3">
         {sessions.map((session, index) => (
           <div key={index}>
             <Link href={`/sessions?id=${session.id}`}>
-              <h4 className="text-core-blue text-lg font-semibold underline-offset-4 hover:underline md:text-2xl">
+              <h4 className="text-core-blue text-lg font-semibold underline-offset-4 hover:underline md:text-lg">
                 {session.title}
-                <ExternalLinkIcon className="-mt-[3px] ml-1 inline-block size-4 md:size-5" />
+                <Link2Icon className="-mt-[3px] ml-1.5 inline-block size-5" />
               </h4>
             </Link>
-            <div className="mt-1 space-y-1 text-sm text-zinc-700 md:text-base">
-              <p className="flex items-center gap-1">
-                <ClockIcon className="size-4 text-slate-500" />
-                <span className="mr-1.5 text-slate-500">時間</span>
-                {session.startsAt && session.endsAt
-                  ? `${formatTime(session.startsAt)} ~ ${formatTime(session.endsAt)}`
-                  : '尚未公布'}
-              </p>
-              <p className="flex items-center gap-1">
-                <MapPinIcon className="size-4 text-slate-500" />
-                <span className="mr-1.5 text-slate-500">教室</span>
-                {session.room ? session.room : '尚未公布'}
-              </p>
+            <div className="flex items-center gap-2 text-sm text-zinc-700 md:text-base">
+              <MapPinIcon className="size-4 text-slate-500" />
+              {session.room ? session.room : '尚未公布'}
+              <ClockIcon className="size-4 text-slate-500" />
+              {session.startsAt && session.endsAt
+                ? `${formatTime(session.startsAt)} ~ ${formatTime(session.endsAt)}`
+                : '尚未公布'}
             </div>
-            <p className="mt-2 text-sm md:text-lg">{session.description}</p>
           </div>
         ))}
       </div>

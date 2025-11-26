@@ -43,7 +43,7 @@ export function CalendarView({
   return (
     <section
       className={clsx(
-        'relative mx-auto flex w-[calc(100%-24px)] flex-1 overflow-x-auto overscroll-none rounded-2xl border border-gray-400 bg-gray-50 lg:w-[calc(100%-40px)]',
+        'relative mx-auto max-w-[1848px] flex w-[calc(100%-24px)] flex-1 overflow-x-auto overscroll-none rounded-2xl border border-gray-400 bg-gray-50 lg:w-[calc(100%-40px)]',
         !show && 'hidden'
       )}
     >
