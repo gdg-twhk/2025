@@ -99,8 +99,8 @@ export function CalendarView({
               const speakersForSession = speakers.filter((speaker) => sessionSpeakersId.has(speaker.id))
               const hasTopicOrTags = session.categories.length > 0
               const sessionTopic =
-                hasTopicOrTags && session.categories[2].categoryItems.length > 0
-                  ? (session.categories[2].categoryItems[0].name as Topic)
+                hasTopicOrTags && session.categories.find((cat) => cat.name === 'Topic')?.categoryItems.length! > 0
+                  ? (session.categories.find((cat) => cat.name === 'Topic')?.categoryItems[0].name as Topic)
                   : ''
 
               return (

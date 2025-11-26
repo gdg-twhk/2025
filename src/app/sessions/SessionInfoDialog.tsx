@@ -14,15 +14,19 @@ interface SessionInfoDialogProps {
 
 export function SessionInfoDialog({ session, speakers }: SessionInfoDialogProps) {
   const sessionTopic =
-    session.categories[2].categoryItems.length > 0 ? (session.categories[2].categoryItems[0].name as Topic) : ''
-  const sessionTags = session.categories[1].categoryItems.filter((tag) => {
-    if (tag.name === sessionTopic) return false
-    if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
-    if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
-    if (sessionTopic === 'Go' && tag.name === 'Golang') return false
-    return true
-  })
-  const language = session.categories[0].categoryItems.length > 0 ? session.categories[0].categoryItems[0].name : null
+    session.categories.find((cat) => cat.name === 'Topic')?.categoryItems.length! > 0
+      ? (session.categories.find((cat) => cat.name === 'Topic')?.categoryItems[0].name as Topic)
+      : ''
+  const sessionTags = session.categories
+    .find((cat) => cat.name === 'Tags')!
+    .categoryItems.filter((tag) => {
+      if (tag.name === sessionTopic) return false
+      if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
+      if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
+      if (sessionTopic === 'Go' && tag.name === 'Golang') return false
+      return true
+    })
+  const language = session.categories.find((cat) => cat.name === 'Language')?.categoryItems[0].name
 
   return (
     <DialogContent className="h-3/4 max-h-3/4 overflow-y-auto px-4 md:px-5 lg:h-3/5 lg:max-h-3/5">

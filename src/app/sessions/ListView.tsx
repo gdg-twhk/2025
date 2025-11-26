@@ -32,8 +32,10 @@ export function ListView({
         const sessionSpeakersId = new Set(session.speakers.map((speaker) => speaker.id))
         const speakersForSession = speakers.filter((speaker) => sessionSpeakersId.has(speaker.id))
         const sessionTopic =
-          session.categories[2].categoryItems.length > 0 ? (session.categories[2].categoryItems[0].name as Topic) : ''
-        const sessionTags = session.categories[1].categoryItems.filter((tag) => {
+          session.categories.find((cat) => cat.name === 'Topic')?.categoryItems.length! > 0
+            ? (session.categories.find((cat) => cat.name === 'Topic')?.categoryItems[0].name as Topic)
+            : ''
+        const sessionTags = session.categories.find((cat) => cat.name === 'Tags')!.categoryItems.filter((tag) => {
           if (tag.name === sessionTopic) return false
           if (sessionTopic === 'AI / Machine Learning' && tag.name === 'AI/ML') return false
           if (sessionTopic === 'Web Technologies' && tag.name === 'Web') return false
