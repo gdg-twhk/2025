@@ -162,7 +162,7 @@ export function Hero() {
           </span>
           <span className="text-xl font-semibold">
             <Icon className="text-core-red mr-0.5 mb-0.5 inline size-6" icon="mdi:calendar-check" />
-            11月30日 8:30~18:00
+            11月30日 8:30~17:30
           </span>
         </p>
         <Button text="立刻報名" shineAnimation onClick={() => window.open(BEVY_RSVP_URL, '_blank')} />
