@@ -10,6 +10,7 @@ import { Button } from '@/components/Button'
 const navItems = [
   { name: '首頁', href: '/' },
   { name: '參與資訊', href: '/info' },
+  { name: '平面圖', href: '/map' },
   { name: '議程表', href: '/sessions' },
   { name: '講者列表', href: '/speakers' },
   { name: '籌備團隊', href: '/team' },

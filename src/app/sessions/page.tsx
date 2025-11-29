@@ -3,11 +3,13 @@ import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useGlobalDataStore } from '@/store/GlobalDataProvider'
 import { SectionTitle } from '@/components/SectionTitle'
-import { ButtonGroup, ButtonGroupText } from '@/components/ui/button-group'
+import { ButtonGroup } from '@/components/ui/button-group'
 import { ListView } from './ListView'
 import { CalendarView } from './CalendarView'
 import { Button } from '@/components/ui/button'
 import { clsx } from 'clsx'
+import { basePath } from '@/lib/constants'
+import { DownloadIcon } from 'lucide-react'
 
 export default function SessionsPage() {
   return (
@@ -50,7 +52,7 @@ function SessionsContent() {
         viewMode === 'calendar' ? 'h-dvh' : 'min-h-dvh'
       )}
     >
-      <SectionTitle className="mt-10 lg:mt-5 lg:pb-8!" color="yellow">
+      <SectionTitle className="mt-12 mb-4! lg:mt-5 lg:pb-8!" color="yellow">
         議程表
       </SectionTitle>
 
@@ -59,7 +61,18 @@ function SessionsContent() {
       ) : (
         <>
           <div className="mx-auto w-full max-w-2xl px-3">
-            <ButtonGroup className="absolute top-10 left-3 lg:top-[132px] lg:left-1/2 lg:-translate-x-1/2">
+            <Button
+              className="text-halftone-red hover:text-halftone-red absolute top-12 right-4 px-2! py-1! hover:underline lg:top-[132px] lg:right-1/2 lg:translate-x-[120%]"
+              variant="outline"
+              asChild
+            >
+              <a className="flex items-center gap-1" href={`${basePath}/devfest-tp-2025-agenda.pdf`} download>
+                <DownloadIcon className="size-4" />
+                下載 PDF
+              </a>
+            </Button>
+
+            <ButtonGroup className="absolute top-12 left-3 lg:top-[132px] lg:left-1/2 lg:-translate-x-[90%]">
               <Button
                 className={clsx('px-2! py-1!', viewMode === 'calendar' ? 'text-core-blue hover:text-core-blue' : '')}
                 variant="outline"

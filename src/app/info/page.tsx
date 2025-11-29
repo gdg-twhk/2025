@@ -9,6 +9,14 @@ export default function HowTo() {
         </SectionTitle>
 
         <ul>
+          <li>🛜 現場 WiFi
+            <ul className='pl-6 list-decimal'>
+              <li>一般：DevFest Taipei 2025<br />密碼：GDGTaipei2025 </li>
+              <li>工作坊：DevFest 2025 WorkShop<br />密碼：GDGWorkShop</li>
+            </ul>
+          </li>
+          <li>💬 Discord 交流頻道：<a className="text-sky-600 hover:underline" href="https://discord.gg/YdBXQ3Qxj8" target="_blank">https://discord.gg/YdBXQ3Qxj8</a>
+          </li>
           <li>👉 此活動為實體活動，活動當天不會有線上直播，亦不會有 YouTube 影片存檔。</li>
           <li>👉 現場提供飲水機，需自備容器。</li>
           <li>👉 可自行準備點心至現場餐飲區享用，但需自行帶走垃圾。</li>
@@ -22,7 +30,6 @@ export default function HowTo() {
           交通方式
         </SectionTitle>
 
-        {/* TODO: 這邊可以再改進排版 */}
         <div className="space-y-6">
           <div>
             <h3 className="mb-3 text-2xl font-semibold">一、大眾運輸</h3>
