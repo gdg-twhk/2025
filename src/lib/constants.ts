@@ -11,7 +11,7 @@ export const socialLinks = [
   { name: 'Instagram', href: 'https://www.instagram.com/gdg.taipei', icon: 'ri:instagram-fill', size: 26 },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/480844', icon: 'lineicons:linkedin', size: 28 },
   { name: 'Threads', href: 'https://www.threads.com/@gdg.taipei', icon: 'fa7-brands:square-threads', size: 25 },
-  { name: 'GitHub', href: 'https://github.com/GDGTaipei', icon: 'lineicons:github', size: 28 },
+  { name: 'GitHub', href: 'https://github.com/gdg-twhk', icon: 'lineicons:github', size: 28 },
 ]
 
 export const topicClassnames: Record<Topic, { card: string; badge: string }> = {
